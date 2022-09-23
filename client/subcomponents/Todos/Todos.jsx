@@ -74,15 +74,15 @@ function Todos() {
 
   return (
     <>
-    <h1>To do:</h1>
-      <div className="w-50">
+      <h1>To do:</h1>
+      <div className="font-serif ">
         {todos.map((todo) => (
           <Todo key={todo.id} todo={todo} loadTodos={loadTodos} />
         ))}
         {!addClicked && (
           <button
             onClick={handleClick}
-            className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-full text-base"
+            className="bg-blue hover:bg-blue-700 text-white py-1 px-2 rounded-full text-base"
           >
             Add
           </button>

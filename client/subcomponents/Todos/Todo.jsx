@@ -1,5 +1,6 @@
 import React from 'react'
-import { updateTodo } from '../../api/todos'
+import { updateTodo, deleteTodo } from '../../api/todos'
+import Trello from '../Icons/Trello'
 
 function Todo(props) {
   const {
@@ -23,11 +24,19 @@ function Todo(props) {
       .catch(() => {})
   }
 
+  function handleDelete() {
+    // on click change the value in the db
+    console.log('Delete')
+    // deleteTodo(id)
+    //   .then(() => loadTodos())
+    //   .catch(() => {})
+  }
+
   return (
     <>
-      <div className={isDone ? 'line-through text-zinc-400	' : ''}>
+      <div className={isDone ? 'line-through text-vsblack	' : ' text-vsgreen'}>
         <input
-          className="accent-gray-300 text-zinc-400"
+          className="accent-gray-300"
           onChange={handleBoxChecked}
           type="checkbox"
           name=""
@@ -44,7 +53,11 @@ function Todo(props) {
         )}
 
         {inTrello && <span className="text-sky-400">Trello</span>}
-        {isPersonal && <span className=" text-zinc-400">Delete</span>}
+        {isPersonal && (
+          <span className=" text-zinc-400" onClick={handleDelete}>
+            Delete
+          </span>
+        )}
       </div>
     </>
   )

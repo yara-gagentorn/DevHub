@@ -72,6 +72,14 @@ export function updateTodo(todo, token) {
     .catch(logError)
 }
 
+export function deleteTodo(id, token) {
+  return request
+    .delete(`${rootUrl}/todos`)
+    .set('authorization', `Bearer ${token}`)
+    .then((res) => res.body.todos)
+    .catch(logError)
+}
+
 function logError(err) {
   if (err.response.text === 'Username Taken') {
     throw new Error('Username already taken - please choose another')
