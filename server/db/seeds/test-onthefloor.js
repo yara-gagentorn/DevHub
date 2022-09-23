@@ -6,16 +6,16 @@ exports.seed = (knex) => {
         {
           id: 1,
           user_id: 1,
-          date: null,
-          time_start: null,
-          time_finish: null,
+          date: new Date('October 4, 2022, 12:05:00'),
+          time_start: new Date('October 4, 2022, 14:05:00'),
+          time_finish: new Date('October 4, 2022, 16:05:00'),
         },
         {
           id: 2,
           user_id: 2,
-          date: null,
-          time_start: null,
-          time_finish: null,
+          date: new Date('October 4, 2022, 12:05:00'),
+          time_start: new Date('October 4, 2022, 12:05:00'),
+          time_finish: new Date('October 4, 2022, 14:05:00'),
         },
       ])
     )
