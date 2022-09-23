@@ -5,7 +5,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import Todos from '../subcomponents/Todos'
+import Todos from '../subcomponents/Todos/Todos'
 
 function Nav() {
   const user = useSelector((state) => state.user)

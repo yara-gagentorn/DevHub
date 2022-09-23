@@ -2,10 +2,11 @@ import React, { useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { useCacheUser } from '../auth0-utils'
 import { useAuth0 } from '@auth0/auth0-react'
-
+import { getUser } from '../api/api'
+import Nav from './Nav'
+import Register from './Register'
 
 import Todos from '../subcomponents/Todos/Todos'
-
 
 import Announcements from '../subcomponents/Announcements/Announcements'
 
@@ -36,15 +37,13 @@ function App() {
 
   return (
     <>
-
       <Todos />
       <Nav />
-      <Announcements />
-
+      {/* <Announcements /> */}
       <Routes>
-        <Route path="/" element={<Fruits />} />
+        <Route path="/" element={<Todos />} />
         <Route path="register" element={<Register />} />
-      </Routes> */}
+      </Routes>{' '}
     </>
   )
 }

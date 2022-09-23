@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { addUser } from '../api'
+import { addUser } from '../api/api'
 import { updateLoggedInUser } from '../slices/user'
 import { useAuth0 } from '@auth0/auth0-react'
 
