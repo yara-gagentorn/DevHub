@@ -1,71 +1,30 @@
 import React, { useEffect, useState } from 'react'
 
 import Todo from './Todo'
-import { getTodos } from '../../api/todos'
+import { getTodos, getTodosByUserId } from '../../api/todos'
 import AddTodo from './AddTodo'
 
 function Todos() {
-  const todos = [
-    {
-      id: 1,
-      user_id: 2,
-      date: '23-09-2022',
-      content: 'challenge with fruits',
-      challenge_link: '',
-      inTrello: true,
-      isDone: false,
-      isPersonal: false,
-    },
-    {
-      id: 2,
-      user_id: 2,
-      date: '23-09-2022',
-      content: 'wash my cat',
-      challenge_link: '',
-      inTrello: false,
-      isDone: false,
-      isPersonal: true,
-    },
-    {
-      id: 3,
-      user_id: 2,
-      date: '23-09-2022',
-      content: 'read the article about Redux',
-      challenge_link: 'https://www.merriam-webster.com/dictionary/redux',
-      inTrello: false,
-      isDone: true,
-      isPersonal: false,
-    },
-    {
-      id: 4,
-      user_id: 2,
-      date: '23-09-2022',
-      content: 'leave feedback about pair programming with John',
-      challenge_link: '',
-      inTrello: false,
-      isDone: false,
-      isPersonal: false,
-    },
-  ]
-
-  //const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState([])
   const [addClicked, setAddClicked] = useState(false)
 
   function loadTodos() {
-    // getTodos()
-    //   .then((todos) => {
-    //     setTodos(todos)
-    //   })
-    //   .catch(() => {
-    //     //dispatch(showError(err.message))
-    //     return false
-    //   })
+    getTodosByUserId(2)
+      .then((todos) => {
+        setTodos(todos)
+      })
+      .catch(() => {
+        //dispatch(showError(err.message))
+        return false
+      })
     return true
   }
 
   useEffect(() => {
     loadTodos()
   }, [])
+
+  console.log(todos)
 
   function handleClick(event) {
     event.preventDefault()

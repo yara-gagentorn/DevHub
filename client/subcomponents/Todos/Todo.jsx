@@ -1,6 +1,6 @@
 import React from 'react'
 import { updateTodo, deleteTodo } from '../../api/todos'
-import Trello from '../Icons/Trello'
+// import Trello from '../Icons/Trello'
 
 function Todo(props) {
   const {

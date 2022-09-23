@@ -17,6 +17,27 @@ exports.seed = (knex) => {
           is_done: true,
           is_personal: false,
         },
+        {
+          id: 3,
+          user_id: 2,
+          todo_id: 3,
+          is_done: true,
+          is_personal: false,
+        },
+        {
+          id: 4,
+          user_id: 2,
+          todo_id: 4,
+          is_done: false,
+          is_personal: false,
+        },
+        {
+          id: 5,
+          user_id: 2,
+          todo_id: 5,
+          is_done: false,
+          is_personal: true,
+        },
       ])
     )
 }

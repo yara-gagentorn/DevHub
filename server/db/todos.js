@@ -15,24 +15,25 @@ module.exports = {
 
 // GET all todos
 function getAllTodos(db = connection) {
-  return db('users_todos')
-    .join('todos', 'users_todos.todo_id', 'todos.id')
-    .join('users', 'users_todos.user_id', 'users.id')
+  console.log('hitting DB get all todos')
+  return db('user_todos')
+    .join('todos', 'user_todos.todo_id', 'todos.id')
+    .join('users', 'user_todos.user_id', 'users.id')
     .select(
       'todos.id as id',
       'users.id as user_id',
       'publish_date as date',
       'content',
       'challenge_link',
-      'inTrello',
-      'isDone',
-      'isPersonal'
+      'is_trello as inTrello',
+      'is_done as isDone',
+      'is_personal as isPersonal'
     )
 }
 
 //GET todos by user id
 function getTodosByUserId(id) {
-  return getAllTodos().where('users_id', id)
+  return getAllTodos().where('user_id', id)
 }
 
 //GET todos by user id

@@ -9,8 +9,21 @@ module.exports = router
 // A public endpoint that anyone can access
 // GET /api/v1/todos
 router.get('/', async (req, res) => {
+  console.log('hitting ROUTES')
   try {
     const todos = await db.getAllTodos()
+    res.json({ todos })
+  } catch (err) {
+    console.error(err)
+    res.status(500).send(err.message)
+  }
+})
+
+router.get('/:id', async (req, res) => {
+  const userId = req.params.id
+  console.log('hitting ROUTES for get BY ID')
+  try {
+    const todos = await db.getTodosByUserId(userId)
     res.json({ todos })
   } catch (err) {
     console.error(err)

@@ -590,6 +590,11 @@ video {
   color: rgb(30 30 30 / var(--tw-text-opacity));
 }
 
+.text-vsgreen {
+  --tw-text-opacity: 1;
+  color: rgb(30 79 62 / var(--tw-text-opacity));
+}
+
 .text-sky-400 {
   --tw-text-opacity: 1;
   color: rgb(56 189 248 / var(--tw-text-opacity));
@@ -598,11 +603,6 @@ video {
 .text-zinc-400 {
   --tw-text-opacity: 1;
   color: rgb(161 161 170 / var(--tw-text-opacity));
-}
-
-.text-vsgreen {
-  --tw-text-opacity: 1;
-  color: rgb(30 79 62 / var(--tw-text-opacity));
 }
 
 .line-through {

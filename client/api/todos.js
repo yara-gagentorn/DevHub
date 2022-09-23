@@ -3,53 +3,17 @@ import request from 'superagent'
 const rootUrl = '/api/v1'
 
 export function getTodos() {
-  //fake data
-
-  // const todos = [
-  //   {
-  //     id: 1,
-  //     user_id: 2,
-  //     date: '23-09-2022',
-  //     content: 'challenge with fruits',
-  //     challenge_link: '',
-  //     inTrello: true,
-  //     isDone: false,
-  //     isPersonal: false,
-  //   },
-  //   {
-  //     id: 2,
-  //     user_id: 2,
-  //     date: '23-09-2022',
-  //     content: 'wash my cat',
-  //     challenge_link: '',
-  //     inTrello: false,
-  //     isDone: false,
-  //     isPersonal: true,
-  //   },
-  //   {
-  //     id: 3,
-  //     user_id: 2,
-  //     date: '23-09-2022',
-  //     content: 'read the article about Redux',
-  //     challenge_link: 'https://www.merriam-webster.com/dictionary/redux',
-  //     inTrello: false,
-  //     isDone: true,
-  //     isPersonal: false,
-  //   },
-  //   {
-  //     id: 4,
-  //     user_id: 2,
-  //     date: '23-09-2022',
-  //     content: 'leave feedback about pair programming with John',
-  //     challenge_link: '',
-  //     inTrello: true,
-  //     isDone: false,
-  //     isPersonal: false,
-  //   },
-  // ]
-
+  console.log('hit get TODOS API')
   return request
     .get(`${rootUrl}/todos`)
+    .then((res) => res.body.todos)
+    .catch(logError)
+}
+
+export function getTodosByUserId(userId) {
+  console.log('hit get TODOS by userID API')
+  return request
+    .get(`${rootUrl}/todos/${userId}`)
     .then((res) => res.body.todos)
     .catch(logError)
 }

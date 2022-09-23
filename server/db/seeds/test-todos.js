@@ -18,6 +18,28 @@ exports.seed = (knex) => {
           challenge_link: 'https://github.com/pohutukawa-2022/jwt-auth',
           is_trello: true,
         },
+        {
+          id: 3,
+          publish_date: null,
+          content: 'read the article about redux',
+          challenge_link: 'https://www.merriam-webster.com/dictionary/redux',
+          is_trello: false,
+        },
+        {
+          id: 4,
+          publish_date: null,
+          content:
+            'talk with Ahmad and Rich about the new episod House of the dragon',
+          challenge_link: '',
+          is_trello: false,
+        },
+        {
+          id: 5,
+          publish_date: null,
+          content: 'send email to Clem',
+          challenge_link: '',
+          is_trello: false,
+        },
       ])
     )
 }
