@@ -11,7 +11,7 @@ exports.up = function (knex) {
     table.integer('todos_id').references()
     table.integer('resources_id').references()
     table.integer('journal_id').references()
-    table.integer('auth0-id')
+    table.integer('auth0_id')
     table.blob('profile_picture')
     table.string('pronouns')
     table.string('github_link')
@@ -22,6 +22,7 @@ exports.up = function (knex) {
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
+
 exports.down = function (knex) {
   return knex.schema.dropTable('users')
 }
