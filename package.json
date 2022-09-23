@@ -37,8 +37,9 @@
     "express-jwt": "^6.1.0",
     "express-jwt-authz": "^2.4.1",
     "jwks-rsa": "^2.0.4",
-    "knex": "^1.0.1",
-    "react-redux": "^7.2.5"
+    "knex": "^1.0.7",
+    "react-redux": "^7.2.5",
+    "sqlite3": "^5.1.1"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.18.6",
