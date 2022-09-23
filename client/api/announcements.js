@@ -9,11 +9,11 @@ export function getAnnouncements() {
     .catch(logError)
 }
 
-export function addAnnouncements(todo, token) {
+export function addAnnouncement(announcement, token) {
   return request
     .post(`${rootUrl}/announcements`)
     .set('authorization', `Bearer ${token}`)
-    .send({ announcements })
+    .send({ announcement })
     .then((res) => res.body.announcements)
     .catch(logError)
 }
