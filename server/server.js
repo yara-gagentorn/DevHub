@@ -3,7 +3,6 @@ const express = require('express')
 
 
 const fruitRoutes = require('./routes/fruits')
-const userRoutes = require('./routes/users')
 
 
 const todosRoutes = require('./routes/todos')
@@ -25,9 +24,6 @@ server.use('/api/v1/todos', todosRoutes)
 
 
 server.use('/api/v1/announcements', announcementsRoutes)
-
-server.use('/api/v1/fruits', fruitRoutes)
-server.use('/api/v1/users', userRoutes)
 
 
 server.get('*', (req, res) => {
