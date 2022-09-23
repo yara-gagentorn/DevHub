@@ -585,6 +585,7 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+
 .text-vsblack {
   --tw-text-opacity: 1;
   color: rgb(30 30 30 / var(--tw-text-opacity));
@@ -610,14 +611,18 @@ video {
           text-decoration-line: line-through;
 }
 
+
+
 .no-underline {
   -webkit-text-decoration-line: none;
           text-decoration-line: none;
 }
 
+
 .accent-gray-300 {
   accent-color: #d1d5db;
 }
+
 
 .hover\:bg-blue-700:hover {
   --tw-bg-opacity: 1;

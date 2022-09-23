@@ -3,12 +3,11 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import { useCacheUser } from '../auth0-utils'
 import { useAuth0 } from '@auth0/auth0-react'
 
+
 import Todos from '../subcomponents/Todos/Todos'
 
-//import Nav from './Nav'
-//import Fruits from './Fruits'
-//import { getUser } from '../api'
-//import Register from './Register'
+
+import Announcements from '../subcomponents/Announcements/Announcements'
 
 import { useDispatch } from 'react-redux'
 import { clearLoggedInUser, updateLoggedInUser } from '../slices/user'
@@ -37,8 +36,11 @@ function App() {
 
   return (
     <>
+
       <Todos />
-      {/* <Nav />
+      <Nav />
+      <Announcements />
+
       <Routes>
         <Route path="/" element={<Fruits />} />
         <Route path="register" element={<Register />} />
