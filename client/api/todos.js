@@ -3,7 +3,6 @@ import request from 'superagent'
 const rootUrl = '/api/v1'
 
 export function getTodos() {
-  console.log('hit get TODOS API')
   return request
     .get(`${rootUrl}/todos`)
     .then((res) => res.body.todos)
@@ -11,18 +10,18 @@ export function getTodos() {
 }
 
 export function getTodosByUserId(userId) {
-  console.log('hit get TODOS by userID API')
   return request
     .get(`${rootUrl}/todos/${userId}`)
     .then((res) => res.body.todos)
     .catch(logError)
 }
 
-export function addTodo(todo, token) {
+export function addTodo(todo, usertodo, token) {
+  console.log('from api', todo)
   return request
     .post(`${rootUrl}/todos`)
     .set('authorization', `Bearer ${token}`)
-    .send({ todo })
+    .send({ todo, usertodo })
     .then((res) => res.body.todos)
     .catch(logError)
 }
@@ -38,7 +37,7 @@ export function updateTodo(todo, token) {
 
 export function deleteTodo(id, token) {
   return request
-    .delete(`${rootUrl}/todos`)
+    .delete(`${rootUrl}/todos/${id}`)
     .set('authorization', `Bearer ${token}`)
     .then((res) => res.body.todos)
     .catch(logError)

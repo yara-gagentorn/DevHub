@@ -9,7 +9,6 @@ module.exports = router
 // A public endpoint that anyone can access
 // GET /api/v1/todos
 router.get('/', async (req, res) => {
-  console.log('hitting ROUTES')
   try {
     const todos = await db.getAllTodos()
     res.json({ todos })
@@ -21,7 +20,6 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   const userId = req.params.id
-  console.log('hitting ROUTES for get BY ID')
   try {
     const todos = await db.getTodosByUserId(userId)
     res.json({ todos })
@@ -31,65 +29,57 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-// // use checkJwt as middleware
-// // POST /api/v1/fruits
-// router.post('/', checkJwt, async (req, res) => {
-//   const { fruit } = req.body
-//   const auth0Id = req.user?.sub
-//   const newFruit = {
-//     added_by_user: auth0Id,
-//     name: fruit.name,
-//     average_grams_each: fruit.averageGramsEach,
-//   }
-//   try {
-//     const fruits = await db.addFruit(newFruit)
-//     res.json({ fruits })
-//   } catch (err) {
-//     console.error(err)
-//     res.status(500).send(err.message)
-//   }
-// })
+// POST /api/v1/todos
+router.post('/', async (req, res) => {
+  const { todo, usertodo } = req.body
+  console.log('from routes', todo, usertodo)
+  // const auth0Id = req.user?.sub
 
-// // use checkJwt as middleware
-// // PUT /api/v1/fruits
-// router.put('/', checkJwt, async (req, res) => {
-//   const { fruit } = req.body
-//   const auth0Id = req.user?.sub
-//   const fruitToUpdate = {
-//     id: fruit.id,
-//     added_by_user: auth0Id,
-//     name: fruit.name,
-//     average_grams_each: fruit.averageGramsEach,
-//   }
-//   try {
-//     const fruits = await db.updateFruit(fruitToUpdate, auth0Id)
-//     res.json({ fruits })
-//   } catch (err) {
-//     console.error(err)
-//     if (err.message === 'Unauthorized') {
-//       return res
-//         .status(403)
-//         .send('Unauthorized: Only the user who added the fruit may update it')
-//     }
-//     res.status(500).send(err.message)
-//   }
-// })
+  try {
+    const todos = await db.addTodo(todo, usertodo)
+    res.json({ todos })
+  } catch (err) {
+    console.error(err)
+    res.status(500).send(err.message)
+  }
+})
 
-// // use checkJwt as middleware
-// // DELETE /api/v1/fruits
-// router.delete('/:id', checkJwt, async (req, res) => {
-//   const id = Number(req.params.id)
-//   const auth0Id = req.user?.sub
-//   try {
-//     const fruits = await db.deleteFruit(id, auth0Id)
-//     res.json({ fruits })
-//   } catch (err) {
-//     console.error(err)
-//     if (err.message === 'Unauthorized') {
-//       return res
-//         .status(403)
-//         .send('Unauthorized: Only the user who added the fruit may delete it')
-//     }
-//     res.status(500).send(err.message)
-//   }
-// })
+// PUT /api/v1/todos
+router.put('/', async (req, res) => {
+  console.log(req.body)
+  const { todo } = req.body
+  const todoToUpdate = {
+    id: todo.id,
+    is_done: todo.isDone,
+  }
+  try {
+    const fruits = await db.updateTodo(todoToUpdate)
+    res.json({ fruits })
+  } catch (err) {
+    console.error(err)
+    if (err.message === 'Unauthorized') {
+      return res
+        .status(403)
+        .send('Unauthorized: Only the user who added the fruit may update it')
+    }
+    res.status(500).send(err.message)
+  }
+})
+
+// DELETE /api/v1/todos
+router.delete('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+
+  try {
+    const todos = await db.deleteTodo(id)
+    res.json({ todos })
+  } catch (err) {
+    console.error(err)
+    if (err.message === 'Unauthorized') {
+      return res
+        .status(403)
+        .send('Unauthorized: Only the user who added the fruit may delete it')
+    }
+    res.status(500).send(err.message)
+  }
+})

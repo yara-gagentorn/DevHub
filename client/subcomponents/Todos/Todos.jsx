@@ -24,8 +24,6 @@ function Todos() {
     loadTodos()
   }, [])
 
-  console.log(todos)
-
   function handleClick(event) {
     event.preventDefault()
     setAddClicked(!addClicked)

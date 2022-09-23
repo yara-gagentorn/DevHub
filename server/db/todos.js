@@ -4,6 +4,9 @@ module.exports = {
   getAllTodos,
   getTodosByUserId,
   getTodosByUserIdAndDate,
+  updateTodo,
+  addTodo,
+  deleteTodo,
 }
 
 // sort by date
@@ -15,7 +18,7 @@ module.exports = {
 
 // GET all todos
 function getAllTodos(db = connection) {
-  console.log('hitting DB get all todos')
+  // console.log('hitting DB get all todos')
   return db('user_todos')
     .join('todos', 'user_todos.todo_id', 'todos.id')
     .join('users', 'user_todos.user_id', 'users.id')
@@ -58,39 +61,33 @@ function getTodosByUserIdAndDate(id, date) {
 //     .then(sort)
 // }
 
-// async function addFruit(fruit, db = connection) {
-//   return db('fruits')
-//     .insert(fruit)
-//     .then(() => db)
-//     .then(getFruits)
-//     .then(sort)
-// }
+function addTodo(todo, usertodo, db = connection) {
+  return db('todos')
+    .insert(todo)
+    .then((id) => db('user_todos').insert({ ...usertodo, todo_id: id }))
+}
 
-// async function updateFruit(newFruit, user, db = connection) {
-//   return db('fruits')
-//     .where('id', newFruit.id)
-//     .first()
-//     .then((fruit) => authorizeUpdate(fruit, user))
-//     .then(() => {
-//       return db('fruits').where('id', newFruit.id).update(newFruit)
-//     })
-//     .then(() => db)
-//     .then(getFruits)
-//     .then(sort)
-// }
+function updateTodo(newTodo, user, db = connection) {
+  console.log(newTodo)
+  return db('user_todos')
+    .where('todo_id', newTodo.id)
+    .first()
+    .then(() => {
+      return db('user_todos').where('todo_id', newTodo.id).update(newTodo)
+    })
+    .then(() => db)
+}
 
-// async function deleteFruit(id, auth0Id, db = connection) {
-//   return db('fruits')
-//     .where('id', id)
-//     .first()
-//     .then((fruit) => authorizeUpdate(fruit, auth0Id))
-//     .then(() => {
-//       return db('fruits').where('id', id).delete()
-//     })
-//     .then(() => db)
-//     .then(getFruits)
-//     .then(sort)
-// }
+async function deleteTodo(id, db = connection) {
+  return db('todos')
+    .where('id', id)
+    .first()
+    .delete()
+    .then(() => {
+      return db('user_todos').where('todo_id', id).delete()
+    })
+    .then(() => db)
+}
 
 // function authorizeUpdate(fruit, auth0Id) {
 //   if (fruit.added_by_user !== auth0Id) {

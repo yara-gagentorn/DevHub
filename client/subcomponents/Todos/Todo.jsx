@@ -14,22 +14,21 @@ function Todo(props) {
     isPersonal,
   } = props.todo
 
-  const { loadTodos } = props.loadTodos
+  const loadTodos = props.loadTodos
 
   function handleBoxChecked() {
-    // on click change the value in the db
     const newTodo = { ...props.todo, isDone: !props.todo.isDone }
     updateTodo(newTodo)
-      .then(() => loadTodos())
+      .then(loadTodos())
       .catch(() => {})
   }
 
   function handleDelete() {
     // on click change the value in the db
     console.log('Delete')
-    // deleteTodo(id)
-    //   .then(() => loadTodos())
-    //   .catch(() => {})
+    deleteTodo(id)
+      .then(() => loadTodos())
+      .catch(() => {})
   }
 
   return (
@@ -52,8 +51,8 @@ function Todo(props) {
           content
         )}
 
-        {inTrello && <span className="text-sky-400">Trello</span>}
-        {isPersonal && (
+        {!!inTrello && <span className="text-sky-400">Trello</span>}
+        {!!isPersonal && (
           <span className=" text-zinc-400" onClick={handleDelete}>
             Delete
           </span>

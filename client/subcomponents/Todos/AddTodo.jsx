@@ -2,16 +2,31 @@ import React, { useState } from 'react'
 import { addTodo } from '../../api/todos'
 
 function AddTodo(props) {
-  const { loadTodos } = props.loadTodos
+  const loadTodos = props.loadTodos
   const [input, setInput] = useState('')
   const [clicked, setClicked] = useState(true)
+
   function handleChange(event) {
     setInput(event.target.value)
   }
+
   function handleSubmit(event) {
     // addTodo
     event.preventDefault()
-    addTodo(input)
+    const newTodo = {
+      content: input,
+      challenge_link: '',
+      is_trello: false,
+      publish_date: new Date(),
+    }
+    const newUserTodo = {
+      is_personal: true,
+      is_done: false,
+      user_id: 2,
+    }
+
+    console.log('from component', newTodo)
+    addTodo(newTodo, newUserTodo)
       .then(() => loadTodos())
       .catch(() => {})
     setClicked(!clicked)
