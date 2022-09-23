@@ -1,5 +1,3 @@
-var today = new Date()
-
 exports.seed = (knex) => {
   return knex('onthefloor')
     .del()
@@ -8,16 +6,16 @@ exports.seed = (knex) => {
         {
           id: 1,
           user_id: 1,
-          date: Date('2022-10-03'),
-          time_start: today.getHours('10') + ':' + today.getMinutes('00'),
-          time_finish: today.getHours('12') + ':' + today.getMinutes('30'),
+          date: null,
+          time_start: null,
+          time_finish: null,
         },
         {
           id: 2,
           user_id: 2,
-          date: Date('2022-10-03'),
-          time_start: today.getHours('13') + ':' + today.getMinutes('00'),
-          time_finish: today.getHours('17') + ':' + today.getMinutes('00'),
+          date: null,
+          time_start: null,
+          time_finish: null,
         },
       ])
     )

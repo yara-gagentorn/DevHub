@@ -5,18 +5,18 @@ exports.seed = (knex) => {
       knex('todos').insert([
         {
           id: 1,
-          publish_date: new Date(2022, 10, 3),
+          publish_date: null,
           content: 'Learn Redux full-stack',
           challenge_link:
             'https://github.com/pohutukawa-2022/sweet-as-organics-api',
-          in_trello: true,
+          is_trello: true,
         },
         {
           id: 2,
-          publish_date: Date(2022, 10, 8),
+          publish_date: null,
           content: 'Auth0',
           challenge_link: 'https://github.com/pohutukawa-2022/jwt-auth',
-          in_trello: true,
+          is_trello: true,
         },
       ])
     )

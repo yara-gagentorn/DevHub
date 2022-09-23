@@ -3,12 +3,12 @@
  * @returns { Promise<void> }
  */
 exports.up = function (knex) {
-  return knex.schema.createTable('todos', (table) => {
+  return knex.schema.createTable('user_todos', (table) => {
     table.increments('id')
-    table.date('publish_date')
-    table.string('content')
-    table.string('challenge_link')
-    table.boolean('is_trello')
+    table.integer('user_id')
+    table.integer('todo_id')
+    table.boolean('is_done')
+    table.boolean('is_personal')
   })
 }
 
@@ -18,5 +18,5 @@ exports.up = function (knex) {
  */
 
 exports.down = function (knex) {
-  return knex.schema.dropTable('todos')
+  return knex.schema.dropTable('user_todos')
 }
