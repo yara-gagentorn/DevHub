@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import { useCacheUser } from '../auth0-utils'
 import { useAuth0 } from '@auth0/auth0-react'
 
-import Todos from '../subcomponents/Todos'
+import Todos from '../subcomponents/Todos/Todos'
 
 //import Nav from './Nav'
 //import Fruits from './Fruits'
