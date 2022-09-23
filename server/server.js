@@ -2,6 +2,10 @@ const path = require('path')
 const express = require('express')
 
 
+const fruitRoutes = require('./routes/fruits')
+const userRoutes = require('./routes/users')
+
+
 const todosRoutes = require('./routes/todos')
 
 
@@ -15,6 +19,8 @@ server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
 
 
+server.use('/api/v1/fruits', fruitRoutes)
+server.use('/api/v1/users', userRoutes)
 server.use('/api/v1/todos', todosRoutes)
 
 

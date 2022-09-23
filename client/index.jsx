@@ -10,10 +10,10 @@ import store from './store'
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Auth0Provider
-      domain=''
-      clientId=''
+      domain="https://pohutukawa-sebastian.au.auth0.com"
+      clientId="sVWEvoTEAXWohvxZuqOEAGTlCuDGwM7C"
       redirectUri={window.location.origin}
-      audience=''
+      audience="https://devhub/api"
     >
       <Provider store={store}>
         <Router>
