@@ -32,7 +32,6 @@ router.get('/:id', async (req, res) => {
 // POST /api/v1/todos
 router.post('/', async (req, res) => {
   const { todo, usertodo } = req.body
-  console.log('from routes', todo, usertodo)
   // const auth0Id = req.user?.sub
 
   try {
@@ -46,7 +45,6 @@ router.post('/', async (req, res) => {
 
 // PUT /api/v1/todos
 router.put('/', async (req, res) => {
-  console.log(req.body)
   const { todo } = req.body
   const todoToUpdate = {
     id: todo.id,
@@ -69,7 +67,6 @@ router.put('/', async (req, res) => {
 // DELETE /api/v1/todos
 router.delete('/:id', async (req, res) => {
   const id = Number(req.params.id)
-
   try {
     const todos = await db.deleteTodo(id)
     res.json({ todos })

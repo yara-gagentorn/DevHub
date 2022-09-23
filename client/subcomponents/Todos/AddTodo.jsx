@@ -25,7 +25,6 @@ function AddTodo(props) {
       user_id: 2,
     }
 
-    console.log('from component', newTodo)
     addTodo(newTodo, newUserTodo)
       .then(() => loadTodos())
       .catch(() => {})

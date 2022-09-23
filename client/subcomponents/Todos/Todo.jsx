@@ -24,8 +24,6 @@ function Todo(props) {
   }
 
   function handleDelete() {
-    // on click change the value in the db
-    console.log('Delete')
     deleteTodo(id)
       .then(() => loadTodos())
       .catch(() => {})

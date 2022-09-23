@@ -18,7 +18,6 @@ module.exports = {
 
 // GET all todos
 function getAllTodos(db = connection) {
-  // console.log('hitting DB get all todos')
   return db('user_todos')
     .join('todos', 'user_todos.todo_id', 'todos.id')
     .join('users', 'user_todos.user_id', 'users.id')
@@ -44,23 +43,6 @@ function getTodosByUserIdAndDate(id, date) {
   return getAllTodos().where('users_id', id).where('publish_date', date)
 }
 
-// function sort(fruitArray) {
-//   const allFruits = [...fruitArray]
-//   allFruits.sort((a, b) => a.id - b.id)
-//   return allFruits
-// }
-
-// async function getTodos(db = connection) {
-//   return db('todos')
-//     .select(
-//       'id',
-//       'name',
-//       'average_grams_each as averageGramsEach',
-//       'added_by_user as addedByUser'
-//     )
-//     .then(sort)
-// }
-
 function addTodo(todo, usertodo, db = connection) {
   return db('todos')
     .insert(todo)
@@ -68,7 +50,6 @@ function addTodo(todo, usertodo, db = connection) {
 }
 
 function updateTodo(newTodo, user, db = connection) {
-  console.log(newTodo)
   return db('user_todos')
     .where('todo_id', newTodo.id)
     .first()

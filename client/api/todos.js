@@ -17,7 +17,6 @@ export function getTodosByUserId(userId) {
 }
 
 export function addTodo(todo, usertodo, token) {
-  console.log('from api', todo)
   return request
     .post(`${rootUrl}/todos`)
     .set('authorization', `Bearer ${token}`)
