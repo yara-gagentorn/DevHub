@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import Announcement from '../subcomponents/Announcement'
+import Announcement from './Announcement'
 
 function Announcements() {
   const announcements = [

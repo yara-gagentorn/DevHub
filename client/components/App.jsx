@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import { useCacheUser } from '../auth0-utils'
 import { useAuth0 } from '@auth0/auth0-react'
 
+import Announcements from '../subcomponents/Announcements/Announcements'
 import Nav from './Nav'
 import Fruits from './Fruits'
 import { getUser } from '../api'
@@ -35,6 +36,7 @@ function App() {
   return (
     <>
       <Nav />
+      <Announcements />
       <Routes>
         <Route path="/" element={<Fruits />} />
         <Route path="register" element={<Register />} />
