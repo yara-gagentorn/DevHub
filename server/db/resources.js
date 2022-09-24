@@ -2,6 +2,7 @@ const connection = require('./connection')
 
 module.exports = {
   getAllResources,
+  addResource,
 }
 
 // GET all todos
@@ -17,4 +18,9 @@ function getAllResources(db = connection) {
       'resources.date as date',
       'users.first_name as first_name'
     )
+}
+
+function addResource(resource, db = connection) {
+  console.log('added resource to DB')
+  return db('resources').insert(resource)
 }

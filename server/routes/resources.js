@@ -16,6 +16,18 @@ router.get('/', async (req, res) => {
   }
 })
 
+router.post('/', async (req, res) => {
+  try {
+    const resource = req.body
+    console.log(resource)
+    const resources = await db.addResource(resource)
+    res.json({ resources })
+  } catch (err) {
+    console.error(err)
+    res.status(500).send(err.message)
+  }
+})
+
 router.get('/:date', async (req, res) => {
   const selectedDate = new Date(req.params.date).toDateString()
 
@@ -28,5 +40,7 @@ router.get('/:date', async (req, res) => {
       })
       .filter((resource) => resource.date === selectedDate)
     res.json(resourceByDate)
-  } catch (error) {}
+  } catch (error) {
+    console.error(error.message)
+  }
 })

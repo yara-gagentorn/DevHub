@@ -9,6 +9,17 @@ export function getAllResources() {
     .catch(logError)
 }
 
+export function getResourcesByDate(date) {
+  return request
+    .get(`${rootUrl}/resources/${date}`)
+    .then((res) => res.body)
+    .catch(logError)
+}
+
+export function addResource(resource) {
+  return request.post(`${rootUrl}/resources/`).send(resource).catch(logError)
+}
+
 function logError(err) {
   if (err.response.text === 'Username Taken') {
     throw new Error('Username already taken - please choose another')

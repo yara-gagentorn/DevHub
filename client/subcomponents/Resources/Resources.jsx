@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { getAllResources } from '../../api/resources'
-import Resource from './Resource'
+import { getAllResources, getResourcesByDate } from '../../api/resources'
+import AddResource from './AddResource'
 
 function Resources() {
   const [resources, setResources] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
+  const [showAdd, setShowAdd] = useState(false)
+  // const [loading, setLoading] = useState(true)
+  // const [error, setError] = useState('')
 
-  const currDate = new Date().toDateString()
-  console.log(currDate)
+  // TODO: Change to today's date, now for testing purpose
+  const testDate = new Date('October 4, 2022, 12:05:00')
 
   async function loadResources() {
     try {
-      const allResources = await getAllResources()
+      const allResources = await getResourcesByDate(testDate.toDateString())
       setResources(allResources)
     } catch (error) {
       console.error(error.message)
@@ -25,9 +26,13 @@ function Resources() {
     //   .catch((err) => console.error(err.message))
   }
 
+  function showAddButton() {
+    setShowAdd(true)
+  }
+
   useEffect(() => {
     loadResources()
-  }, [])
+  }, [resources])
 
   return (
     <div>
@@ -45,7 +50,8 @@ function Resources() {
         })}
       </ul>
 
-      <ul className=""></ul>
+      <button onClick={showAddButton}>Add</button>
+      <AddResource showAdd={showAdd} setShowAdd={setShowAdd} />
     </div>
   )
 }
