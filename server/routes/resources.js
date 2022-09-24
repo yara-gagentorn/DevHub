@@ -6,6 +6,7 @@ const router = express.Router()
 
 module.exports = router
 
+// GET from api/v1/resources
 router.get('/', async (req, res) => {
   try {
     const resources = await db.getAllResources()
@@ -16,6 +17,7 @@ router.get('/', async (req, res) => {
   }
 })
 
+// POST to api/v1/resources
 router.post('/', async (req, res) => {
   try {
     const resource = req.body
