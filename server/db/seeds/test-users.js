@@ -10,7 +10,8 @@ exports.seed = (knex) => {
           role: 'student',
           cohort: 'Pohutakawa',
           auth0_id: 'auth0|123',
-          profile_picture: './profilepictures/rong.jpeg',
+          profile_picture:
+            'https://avatars.githubusercontent.com/u/7552088?v=4',
           pronouns: 'she/her',
           github_link: 'https://github.com/rongyue1',
         },
@@ -21,7 +22,8 @@ exports.seed = (knex) => {
           role: 'facilitator',
           cohort: null,
           auth0_id: 'auth0|124',
-          profile_picture: './profilepictures/ahmad.jpeg',
+          profile_picture:
+            'https://avatars.githubusercontent.com/u/92340293?v=4',
           pronouns: 'he/him',
           github_link: 'https://github.com/AhmedAnwarHafez',
         },
