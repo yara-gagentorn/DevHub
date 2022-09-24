@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 
 import Todo from './Todo'
 import { getTodos, getTodosByUserId } from '../../api/todos'
-import AddTodo from './AddTodo'
+// import AddTodo from './AddTodo'
+import AdminAddTodo from './AdminAddTodo'
 
 function Todos() {
   const [todos, setTodos] = useState([])
@@ -39,7 +40,7 @@ function Todos() {
         {!addClicked && (
           <button
             onClick={handleClick}
-            className="bg-blue hover:bg-blue-700 text-white py-1 px-2 rounded-full text-base"
+            className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-full text-base"
           >
             Add
           </button>
@@ -47,7 +48,7 @@ function Todos() {
       </div>
       {addClicked && (
         <div>
-          <AddTodo loadTodos={loadTodos} />
+          <AdminAddTodo loadTodos={loadTodos} />
         </div>
       )}
     </>

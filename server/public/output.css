@@ -551,6 +551,10 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.table {
+  display: table;
+}
+
 .rounded-full {
   border-radius: 9999px;
 }
