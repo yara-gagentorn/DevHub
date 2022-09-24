@@ -3,7 +3,6 @@ import request from 'superagent'
 const rootUrl = '/api/v1'
 
 export function getTodos() {
-  console.log('hit get TODOS API')
   return request
     .get(`${rootUrl}/todos`)
     .then((res) => res.body.todos)
@@ -11,7 +10,6 @@ export function getTodos() {
 }
 
 export function getTodosByUserId(userId) {
-  console.log('hit get TODOS by userID API')
   return request
     .get(`${rootUrl}/todos/${userId}`)
     .then((res) => res.body.todos)

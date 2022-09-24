@@ -37,13 +37,8 @@ function App() {
 
   return (
     <>
-      <Todos />
       <Nav />
-      {/* <Announcements /> */}
-      <Routes>
-        <Route path="/" element={<Todos />} />
-        <Route path="register" element={<Register />} />
-      </Routes>{' '}
+      <Announcements />
     </>
   )
 }

@@ -9,21 +9,11 @@ export function getAnnouncements() {
     .catch(logError)
 }
 
-export function addAnnouncement(announcement, token) {
+export function getAnnouncementsByDate(date) {
+  console.log('hit get announcementByDate Fn')
   return request
-    .post(`${rootUrl}/announcements`)
-    .set('authorization', `Bearer ${token}`)
-    .send({ announcement })
-    .then((res) => res.body.announcements)
-    .catch(logError)
-}
-
-export function updateAnnouncements(announcements, token) {
-  return request
-    .put(`${rootUrl}/announcements`)
-    .set('authorization', `Bearer ${token}`)
-    .send({ announcements })
-    .then((res) => res.body.announcements)
+    .get(`${rootUrl}/announcements/${date}`)
+    .then((res) => res.body)
     .catch(logError)
 }
 
