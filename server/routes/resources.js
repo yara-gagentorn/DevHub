@@ -30,6 +30,7 @@ router.post('/', async (req, res) => {
   }
 })
 
+// GET from api/v1/:date
 router.get('/:date', async (req, res) => {
   const selectedDate = new Date(req.params.date).toDateString()
 
