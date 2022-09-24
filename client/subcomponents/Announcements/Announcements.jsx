@@ -1,13 +1,11 @@
 export default Announcements
 import React, { useState, useEffect } from 'react'
-
-import {
-  getAnnouncements,
-  getAnnouncementsByDate,
-} from '../../api/announcements'
+import AddAnnouncement from './AddAnnouncement'
+import { getAnnouncementsByDate } from '../../api/announcements'
 
 function Announcements() {
   const [announcements, setAnnouncements] = useState([])
+  const [showAdd, setShowAdd] = useState(false)
 
   const testDate = new Date('October 3, 2022, 12:05:00')
 
@@ -20,9 +18,13 @@ function Announcements() {
     }
   }
 
+  function showAddButton() {
+    setShowAdd(true)
+  }
+
   useEffect(() => {
     loadAnnouncements()
-  }, [])
+  }, [announcements])
 
   return (
     <div>
@@ -39,8 +41,8 @@ function Announcements() {
         })}
       </ul>
 
-      {/* <button onClick={showAddButton}>Add</button>
-        <AddResource showAdd={showAdd} setShowAdd={setShowAdd} /> */}
+      <button onClick={showAddButton}>Add</button>
+      <AddAnnouncement showAdd={showAdd} setShowAdd={setShowAdd} />
     </div>
   )
 }

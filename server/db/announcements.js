@@ -3,7 +3,7 @@ const connection = require('./connection')
 module.exports = {
   getAllAnnouncements,
   getAnnouncementsByDate,
-  // addAnnouncement,
+  addAnnouncement,
 }
 
 // GET all announcements
@@ -24,7 +24,7 @@ function getAnnouncementsByDate(date) {
   return getAllAnnouncements().where('date', date)
 }
 
-// function addAnnouncement(message, ) {
-//   return db('announcements')
-//   .insert()
-// }
+function addAnnouncement(announcement, db = connection) {
+  console.log('added resource to DB')
+  return db('announcements').insert(announcement)
+}

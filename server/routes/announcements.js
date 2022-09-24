@@ -11,7 +11,6 @@ module.exports = router
 // GET /api/v1/announcements
 router.get('/', async (req, res) => {
   try {
-    console.log('using normal route')
     const announcements = await db.getAllAnnouncements()
     res.json({ announcements })
   } catch (err) {
@@ -24,7 +23,6 @@ router.get('/:date', async (req, res) => {
   const currentDate = new Date(req.params.date).toDateString()
 
   try {
-    console.log('using :date route')
     const announcements = await db.getAllAnnouncements()
     const currentDateAnnouncements = announcements
       .map((announcement) => {
@@ -35,5 +33,18 @@ router.get('/:date', async (req, res) => {
     res.json(currentDateAnnouncements)
   } catch (error) {
     console.error(error.message)
+  }
+})
+
+// POST to api/v1/resources
+router.post('/', async (req, res) => {
+  try {
+    const announcement = req.body
+    console.log(announcement)
+    const announcements = await db.addAnnouncement(announcement)
+    res.json({ announcements })
+  } catch (err) {
+    console.error(err)
+    res.status(500).send(err.message)
   }
 })

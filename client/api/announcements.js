@@ -10,10 +10,16 @@ export function getAnnouncements() {
 }
 
 export function getAnnouncementsByDate(date) {
-  console.log('hit get announcementByDate Fn')
   return request
     .get(`${rootUrl}/announcements/${date}`)
     .then((res) => res.body)
+    .catch(logError)
+}
+
+export function addAnnouncement(announcement) {
+  return request
+    .post(`${rootUrl}/announcements/`)
+    .send(announcement)
     .catch(logError)
 }
 
