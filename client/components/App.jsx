@@ -5,10 +5,9 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { getUser } from '../api/api'
 import Nav from './Nav'
 import Register from './Register'
+import Resources from '../subcomponents/Resources/Resources'
 
 import Todos from '../subcomponents/Todos/Todos'
-
-import Announcements from '../subcomponents/Announcements/Announcements'
 
 import { useDispatch } from 'react-redux'
 import { clearLoggedInUser, updateLoggedInUser } from '../slices/user'
@@ -37,13 +36,8 @@ function App() {
 
   return (
     <>
-      <Todos />
       <Nav />
-      {/* <Announcements /> */}
-      <Routes>
-        <Route path="/" element={<Todos />} />
-        <Route path="register" element={<Register />} />
-      </Routes>{' '}
+      <Resources />
     </>
   )
 }

@@ -43,8 +43,6 @@ function Nav() {
           </Link>
         </IfNotAuthenticated>
       </nav>
-      <h1>Fruit FTW! Hello</h1>
-      <Todos />
     </>
   )
 }
