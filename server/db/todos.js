@@ -6,6 +6,7 @@ module.exports = {
   getTodosByUserIdAndDate,
   updateTodo,
   addTodo,
+  addMultipleTodo,
   deleteTodo,
 }
 
@@ -49,10 +50,25 @@ function addTodo(todo, usertodo, db = connection) {
     .then((id) => db('user_todos').insert({ ...usertodo, todo_id: id }))
 }
 
-function updateTodo(newTodo, user, db = connection) {
+function addMultipleTodo(todo, usersTodos, db = connection) {
+  const { publish_date, content, challenge_link, is_trello } = todo
+  return db('todos')
+    .insert({ publish_date, content, challenge_link, is_trello })
+    .then(([id]) => {
+      return Promise.all(
+        usersTodos.map((userTodo) => {
+          return db('user_todos').insert({ ...userTodo, todo_id: id })
+        })
+      )
+    })
+    .then((results) => results.flat())
+}
+
+function updateTodo(newTodo, db = connection) {
+  console.log(newTodo)
   return db('user_todos')
     .where('todo_id', newTodo.id)
-    .first()
+    .where('user_id', newTodo.user_id)
     .then(() => {
       return db('user_todos').where('todo_id', newTodo.id).update(newTodo)
     })

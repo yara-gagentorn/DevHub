@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { addTodo } from '../../api/todos'
+import { addTodo, addMultipleTodo } from '../../api/todos'
 
 function AdminAddTodo(props) {
   // facilitators and students id - get from props
-  const facilitatorsIds = [2, 3, 4, 5]
-  const studentsIds = [1, 6, 7]
+  const facilitatorsIds = [2]
+  const studentsIds = [1]
   const currentUserId = 2
 
   const loadTodos = props.loadTodos
@@ -63,9 +63,15 @@ function AdminAddTodo(props) {
     const a = getArrayOfNewUserTodo(select)
     console.log(a)
 
-    // addTodo(newTodo, newUserTodo)
-    //   .then(() => loadTodos())
-    //   .catch(() => {})
+    // a.map((newUserTodo) =>
+    //   addTodo(newTodo, newUserTodo)
+    //     .then(() => loadTodos())
+    //     .catch(() => {})
+    // )
+
+    addMultipleTodo(newTodo, a)
+      .then(() => loadTodos())
+      .catch(() => {})
 
     setClicked(!clicked)
   }

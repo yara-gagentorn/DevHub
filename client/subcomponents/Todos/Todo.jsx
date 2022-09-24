@@ -12,13 +12,19 @@ function Todo(props) {
     inTrello,
     isDone,
     isPersonal,
+    currentUserId,
   } = props.todo
 
   const loadTodos = props.loadTodos
 
   function handleBoxChecked() {
-    const newTodo = { ...props.todo, isDone: !props.todo.isDone }
-    updateTodo(newTodo)
+    console.log('inicial', props.todo)
+    const newTodo = {
+      ...props.todo,
+      isDone: !props.todo.isDone,
+    }
+    console.log('changed', newTodo)
+    updateTodo(newTodo, currentUserId)
       .then(loadTodos())
       .catch(() => {})
   }

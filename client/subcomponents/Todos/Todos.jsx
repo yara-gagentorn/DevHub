@@ -3,14 +3,15 @@ import React, { useEffect, useState } from 'react'
 import Todo from './Todo'
 import { getTodos, getTodosByUserId } from '../../api/todos'
 // import AddTodo from './AddTodo'
-import AdminAddTodo from './AdminAddTodo'
+import AddTodo from './AdminAddTodo'
 
 function Todos() {
   const [todos, setTodos] = useState([])
   const [addClicked, setAddClicked] = useState(false)
+  const currentUserId = 2
 
   function loadTodos() {
-    getTodosByUserId(2)
+    getTodosByUserId(currentUserId)
       .then((todos) => {
         setTodos(todos)
       })
@@ -35,7 +36,12 @@ function Todos() {
       <h1>To do:</h1>
       <div className="font-serif ">
         {todos.map((todo) => (
-          <Todo key={todo.id} todo={todo} loadTodos={loadTodos} />
+          <Todo
+            key={todo.id}
+            todo={todo}
+            loadTodos={loadTodos}
+            currentUserId={currentUserId}
+          />
         ))}
         {!addClicked && (
           <button
@@ -48,7 +54,7 @@ function Todos() {
       </div>
       {addClicked && (
         <div>
-          <AdminAddTodo loadTodos={loadTodos} />
+          <AddTodo loadTodos={loadTodos} />
         </div>
       )}
     </>

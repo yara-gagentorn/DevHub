@@ -10,6 +10,7 @@ exports.seed = (knex) => {
           challenge_link:
             'https://github.com/pohutukawa-2022/sweet-as-organics-api',
           is_trello: true,
+          created_by_id: 2,
         },
         {
           id: 2,
@@ -17,6 +18,7 @@ exports.seed = (knex) => {
           content: 'Auth0',
           challenge_link: 'https://github.com/pohutukawa-2022/jwt-auth',
           is_trello: true,
+          created_by_id: 2,
         },
         {
           id: 3,

@@ -31,22 +31,33 @@ router.get('/:id', async (req, res) => {
 
 // POST /api/v1/todos
 router.post('/', async (req, res) => {
-  const { todo, usertodo } = req.body
+  const { todo, users: usersTodos } = req.body
   // const auth0Id = req.user?.sub
-
-  try {
-    const todos = await db.addTodo(todo, usertodo)
-    res.json({ todos })
-  } catch (err) {
-    console.error(err)
-    res.status(500).send(err.message)
+  if (usersTodos.length > 1) {
+    try {
+      const todos = await db.addMultipleTodo(todo, usersTodos)
+      res.json({ todos })
+    } catch (err) {
+      console.error(err)
+      res.status(500).send(err.message)
+    }
+  } else {
+    try {
+      const todos = await db.addTodo(todo, usersTodos)
+      res.json({ todos })
+    } catch (err) {
+      console.error(err)
+      res.status(500).send(err.message)
+    }
   }
 })
 
 // PUT /api/v1/todos
 router.put('/', async (req, res) => {
-  const { todo } = req.body
+  const { todo, currentUserId } = req.body
+  console.log(currentUserId, todo)
   const todoToUpdate = {
+    user_id: todo.user_id,
     id: todo.id,
     is_done: todo.isDone,
   }

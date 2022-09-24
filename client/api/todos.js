@@ -25,11 +25,20 @@ export function addTodo(todo, usertodo, token) {
     .catch(logError)
 }
 
-export function updateTodo(todo, token) {
+export function addMultipleTodo(todo, users, token) {
+  return request
+    .post(`${rootUrl}/todos`)
+    .set('authorization', `Bearer ${token}`)
+    .send({ todo, users })
+    .then((res) => res.body.todos)
+    .catch(logError)
+}
+
+export function updateTodo(todo, currentUserId, token) {
   return request
     .put(`${rootUrl}/todos`)
     .set('authorization', `Bearer ${token}`)
-    .send({ todo })
+    .send({ todo, currentUserId })
     .then((res) => res.body.todos)
     .catch(logError)
 }
