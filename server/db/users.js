@@ -24,5 +24,5 @@ function createUser(user, db = connection) {
 }
 
 function getAllUserImages(db = connection) {
-  return db('users').select('first_name', 'last_name', 'profile_picture')
+  return db('users').select('id', 'first_name', 'last_name', 'profile_picture')
 }
