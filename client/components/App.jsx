@@ -7,6 +7,7 @@ import Nav from './Nav'
 import Register from './Register'
 
 import Todos from '../subcomponents/Todos/Todos'
+import AdminOnTheFloor from '../views/admin/AdminOnTheFloor/AdminOnTheFloor'
 
 import Announcements from '../subcomponents/Announcements/Announcements'
 
@@ -38,6 +39,7 @@ function App() {
   return (
     <>
       <Todos />
+      <AdminOnTheFloor />
     </>
   )
 }
