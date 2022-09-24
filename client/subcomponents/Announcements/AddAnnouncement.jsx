@@ -8,9 +8,8 @@ function AddAnnouncement(props) {
   const testDate = new Date('October 3, 2022, 12:05:00')
 
   const [form, setForm] = useState({
-    description: '',
+    message: '',
     url: '',
-    icon: '',
     date: testDate, // TODO: Change to today's date
     user_id: 2, // TODO: import current USER_ID
   })
