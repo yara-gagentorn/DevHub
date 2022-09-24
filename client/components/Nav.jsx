@@ -18,7 +18,9 @@ function Nav() {
 
   function handleSignIn(e) {
     e.preventDefault()
-    loginWithRedirect()
+    loginWithRedirect({
+      scope: 'role:member',
+    })
   }
 
   return (
