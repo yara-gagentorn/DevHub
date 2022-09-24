@@ -6,6 +6,7 @@ import { getUser } from '../api/api'
 import Nav from './Nav'
 import Register from './Register'
 import Resources from '../subcomponents/Resources/Resources'
+import Profile from '../subcomponents/Profile/Profile'
 
 import Todos from '../subcomponents/Todos/Todos'
 
@@ -38,6 +39,7 @@ function App() {
     <>
       <Nav />
       <Resources />
+      <Profile />
     </>
   )
 }
