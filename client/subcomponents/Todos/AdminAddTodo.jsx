@@ -8,11 +8,11 @@ function AdminAddTodo(props) {
   const currentUserId = 2
 
   const loadTodos = props.loadTodos
+  const [clicked, setClicked] = useState(false)
 
   const [input, setInput] = useState('')
   const [select, setSelect] = useState('me')
-  const [clicked, setClicked] = useState(true)
-  const [selectMultiple, setSelectMultiple] = useState(false)
+  //const [selectMultiple, setSelectMultiple] = useState(false)
 
   function handleChange(event) {
     setInput(event.target.value)
@@ -43,6 +43,7 @@ function AdminAddTodo(props) {
           return studentsIds.map((id) => ({
             ...newUserTodo,
             user_id: id,
+            is_personal: false,
           }))
 
         case 'all-facilitators':
@@ -55,6 +56,7 @@ function AdminAddTodo(props) {
           return facilitatorsIds.concat(studentsIds).map((id) => ({
             ...newUserTodo,
             user_id: id,
+            is_personal: false,
           }))
       }
     }
@@ -67,11 +69,17 @@ function AdminAddTodo(props) {
     //     .catch(() => {})
     // )
 
-    addMultipleTodo(newTodo, arrayOfNewUserTodo)
-      .then(() => loadTodos())
-      .catch(() => {})
+    if (arrayOfNewUserTodo.length == 1) {
+      addTodo(newTodo, newUserTodo)
+        .then(() => loadTodos())
+        .catch(() => {})
+    } else {
+      addMultipleTodo(newTodo, arrayOfNewUserTodo)
+        .then(() => loadTodos())
+        .catch(() => {})
+    }
 
-    setClicked(!clicked)
+    props.setShowAdd(false)
   }
 
   function handleSelectForMultiple(event) {}
@@ -81,19 +89,17 @@ function AdminAddTodo(props) {
   }
 
   return (
-    <>
-      {clicked && (
-        <>
-          <input type="text" onChange={handleChange} />
-          <label htmlFor="todo-for">Add for </label>
-          <select name="todo-for" defaultValue="me" onChange={handleSelectFor}>
-            <option value="me">me</option>
-            <option value="all-students">all students</option>
-            <option value="all-facilitators">all facilitators</option>
-            <option value="all">all</option>
-            <option value="some-people">selected people</option>
-          </select>
-          {!!selectMultiple && (
+    <div className={props.showAdd ? '' : 'hidden'}>
+      <input type="text" onChange={handleChange} />
+      <label htmlFor="todo-for">Add for </label>
+      <select name="todo-for" defaultValue="me" onChange={handleSelectFor}>
+        <option value="me">me</option>
+        <option value="all-students">all students</option>
+        <option value="all-facilitators">all facilitators</option>
+        <option value="all">all</option>
+        <option value="some-people">selected people</option>
+      </select>
+      {/* {!!selectMultiple && (
             <>
               <label htmlFor="select-people">Select person </label>
               <select
@@ -107,16 +113,14 @@ function AdminAddTodo(props) {
                 <option value="4">Sebastian</option>
               </select>
             </>
-          )}
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-full text-base"
-            onClick={handleSubmit}
-          >
-            Add
-          </button>{' '}
-        </>
-      )}
-    </>
+          )} */}
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-full text-base"
+        onClick={handleSubmit}
+      >
+        Add
+      </button>{' '}
+    </div>
   )
 }
 

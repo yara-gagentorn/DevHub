@@ -551,8 +551,20 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.visible {
+  visibility: visible;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
 .table {
   display: table;
+}
+
+.hidden {
+  display: none;
 }
 
 .rounded-full {

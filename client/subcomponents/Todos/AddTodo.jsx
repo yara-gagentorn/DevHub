@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { addTodo } from '../../api/todos'
 
 function AddTodo(props) {
+  const setAddClicked = props.setAddClicked
+
   const loadTodos = props.loadTodos
   const [input, setInput] = useState('')
   const [clicked, setClicked] = useState(true)

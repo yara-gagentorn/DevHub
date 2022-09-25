@@ -62,7 +62,6 @@ function Todo(props) {
           </span>
         )}
       </div>
-      
     </>
   )
 }
