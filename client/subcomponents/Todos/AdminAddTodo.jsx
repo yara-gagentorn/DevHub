@@ -58,10 +58,8 @@ function AdminAddTodo(props) {
           }))
       }
     }
-    // for each selection different
-    console.log(select)
-    const a = getArrayOfNewUserTodo(select)
-    console.log(a)
+
+    const arrayOfNewUserTodo = getArrayOfNewUserTodo(select)
 
     // a.map((newUserTodo) =>
     //   addTodo(newTodo, newUserTodo)
@@ -69,7 +67,7 @@ function AdminAddTodo(props) {
     //     .catch(() => {})
     // )
 
-    addMultipleTodo(newTodo, a)
+    addMultipleTodo(newTodo, arrayOfNewUserTodo)
       .then(() => loadTodos())
       .catch(() => {})
 

@@ -33,10 +33,17 @@ exports.seed = (knex) => {
         },
         {
           id: 5,
-          user_id: 2,
+          user_id: 1,
+          todo_id: 3,
+          is_done: false,
+          is_personal: false,
+        },
+        {
+          id: 6,
+          user_id: 1,
           todo_id: 5,
           is_done: false,
-          is_personal: true,
+          is_personal: false,
         },
       ])
     )

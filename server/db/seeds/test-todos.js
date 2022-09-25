@@ -26,6 +26,7 @@ exports.seed = (knex) => {
           content: 'read the article about redux',
           challenge_link: 'https://www.merriam-webster.com/dictionary/redux',
           is_trello: false,
+          created_by_id: 2,
         },
         {
           id: 4,
@@ -34,6 +35,7 @@ exports.seed = (knex) => {
             'talk with Ahmad and Rich about the new episod House of the dragon',
           challenge_link: '',
           is_trello: false,
+          created_by_id: 2,
         },
         {
           id: 5,
@@ -41,6 +43,7 @@ exports.seed = (knex) => {
           content: 'send email to Clem',
           challenge_link: '',
           is_trello: false,
+          created_by_id: 2,
         },
       ])
     )

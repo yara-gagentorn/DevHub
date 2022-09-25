@@ -11,7 +11,6 @@ function AddTodo(props) {
   }
 
   function handleSubmit(event) {
-    // addTodo
     event.preventDefault()
     const newTodo = {
       content: input,
@@ -28,7 +27,7 @@ function AddTodo(props) {
     addTodo(newTodo, newUserTodo)
       .then(() => loadTodos())
       .catch(() => {})
-    setClicked(!clicked)
+    //setClicked(!clicked)
   }
   return (
     <>
@@ -40,7 +39,7 @@ function AddTodo(props) {
             onClick={handleSubmit}
           >
             Add
-          </button>{' '}
+          </button>
         </>
       )}
     </>

@@ -4,8 +4,9 @@ import { updateTodo, deleteTodo } from '../../api/todos'
 
 function Todo(props) {
   const {
-    id,
+    user_todos_id,
     user_id,
+    todo_id,
     date,
     content,
     challenge_link,
@@ -18,19 +19,18 @@ function Todo(props) {
   const loadTodos = props.loadTodos
 
   function handleBoxChecked() {
-    console.log('inicial', props.todo)
     const newTodo = {
       ...props.todo,
       isDone: !props.todo.isDone,
     }
-    console.log('changed', newTodo)
+
     updateTodo(newTodo, currentUserId)
       .then(loadTodos())
       .catch(() => {})
   }
 
   function handleDelete() {
-    deleteTodo(id)
+    deleteTodo(user_todos_id)
       .then(() => loadTodos())
       .catch(() => {})
   }
@@ -62,6 +62,7 @@ function Todo(props) {
           </span>
         )}
       </div>
+      
     </>
   )
 }

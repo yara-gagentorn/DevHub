@@ -18,6 +18,20 @@ router.get('/', async (req, res) => {
   }
 })
 
+// GET by user id AND date
+router.get('/:id/:currentDate', async (req, res) => {
+  const userId = req.params.id
+  const currentDate = req.params.currentDate
+  try {
+    const todos = await db.getTodosByUserIdAndDate(userId, currentDate)
+    res.json({ todos })
+  } catch (err) {
+    console.error(err)
+    res.status(500).send(err.message)
+  }
+})
+
+// GET by user id
 router.get('/:id', async (req, res) => {
   const userId = req.params.id
   try {
@@ -54,16 +68,14 @@ router.post('/', async (req, res) => {
 
 // PUT /api/v1/todos
 router.put('/', async (req, res) => {
-  const { todo, currentUserId } = req.body
-  console.log(currentUserId, todo)
+  const { todo } = req.body
   const todoToUpdate = {
-    user_id: todo.user_id,
-    id: todo.id,
+    id: todo.user_todos_id,
     is_done: todo.isDone,
   }
   try {
-    const fruits = await db.updateTodo(todoToUpdate)
-    res.json({ fruits })
+    const todos = await db.updateTodo(todoToUpdate)
+    res.json({ todos })
   } catch (err) {
     console.error(err)
     if (err.message === 'Unauthorized') {

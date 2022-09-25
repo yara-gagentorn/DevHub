@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
 import Todo from './Todo'
 import { getTodos, getTodosByUserId } from '../../api/todos'
@@ -8,7 +8,9 @@ import AddTodo from './AdminAddTodo'
 function Todos() {
   const [todos, setTodos] = useState([])
   const [addClicked, setAddClicked] = useState(false)
+  const [dialogAddOpen, setDialogAddOpen] = useState(false)
   const currentUserId = 2
+  const ref1 = useRef(null)
 
   function loadTodos() {
     getTodosByUserId(currentUserId)
@@ -31,13 +33,14 @@ function Todos() {
     setAddClicked(!addClicked)
   }
 
+  console.log('current todos for user 2', todos)
   return (
     <>
       <h1>To do:</h1>
       <div className="font-serif ">
         {todos.map((todo) => (
           <Todo
-            key={todo.id}
+            key={todo.user_todos_id}
             todo={todo}
             loadTodos={loadTodos}
             currentUserId={currentUserId}
@@ -52,6 +55,7 @@ function Todos() {
           </button>
         )}
       </div>
+
       {addClicked && (
         <div>
           <AddTodo loadTodos={loadTodos} />
