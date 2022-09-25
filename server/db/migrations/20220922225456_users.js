@@ -10,7 +10,7 @@ exports.up = function (knex) {
     table.string('role')
     table.string('cohort')
     table.string('auth0_id')
-    table.blob('profile_picture')
+    table.string('profile_picture')
     table.string('pronouns')
     table.string('github_link')
   })
