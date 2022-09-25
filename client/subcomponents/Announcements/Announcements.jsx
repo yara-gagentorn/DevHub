@@ -1,12 +1,16 @@
 export default Announcements
 import React, { useState, useEffect } from 'react'
 import AddAnnouncement from './AddAnnouncement'
-import { getAnnouncementsByDate } from '../../api/announcements'
+import {
+  deleteAnnouncement,
+  getAnnouncementsByDate,
+} from '../../api/announcements'
 
 function Announcements() {
   const [announcements, setAnnouncements] = useState([])
   const [showAdd, setShowAdd] = useState(false)
 
+  //TO DO make date dynamic
   const testDate = new Date('October 3, 2022, 12:05:00')
 
   async function loadAnnouncements() {
@@ -26,16 +30,31 @@ function Announcements() {
     loadAnnouncements()
   }, [announcements])
 
+  function handelDelete(id) {
+    deleteAnnouncement(id)
+      .then(() => loadAnnouncements())
+      .catch(() => {})
+  }
+
   return (
-    <div>
+    <div className="bg-[#A1C0E5] text-center">
       <h1>ANNOUNCEMENTS:</h1>
       <ul className="">
         {announcements.map((announcement) => {
           return (
-            <li key={announcement.id} className="flex align-middle w-1/2">
+            <li
+              key={announcement.id}
+              className="flex align-middle text-white w-1/2"
+            >
               <a className="align-middle" href={announcement.url}>
                 {`${announcement.message}`}
               </a>
+              <button
+                className="text-red-700"
+                onClick={() => handelDelete(announcement.id)}
+              >
+                DELETE
+              </button>
             </li>
           )
         })}

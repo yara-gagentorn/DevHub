@@ -40,11 +40,20 @@ router.get('/:date', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const announcement = req.body
-    console.log(announcement)
     const announcements = await db.addAnnouncement(announcement)
     res.json({ announcements })
   } catch (err) {
     console.error(err)
     res.status(500).send(err.message)
+  }
+})
+
+router.delete('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  try {
+    const announcements = await db.deleteAnnouncement(id)
+    res.json({ announcements })
+  } catch (error) {
+    console.error(error)
   }
 })

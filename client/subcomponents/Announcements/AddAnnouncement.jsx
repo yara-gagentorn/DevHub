@@ -37,7 +37,10 @@ function AddAnnouncement(props) {
       onSubmit={handleAddAnnouncementButton}
     >
       <label>
-        <span>Description:</span>
+        <span>
+          <br /> Message:{' '}
+        </span>
+
         <input
           type="text"
           name="message"
@@ -46,7 +49,10 @@ function AddAnnouncement(props) {
         ></input>
       </label>
       <label>
-        <span>URL:</span>
+        <span>
+          <br />
+          <br /> URL:
+        </span>
         <input
           type="text"
           name="url"
@@ -54,7 +60,9 @@ function AddAnnouncement(props) {
           value={form.url}
         ></input>
       </label>
-      <button>Add Announcement</button>
+      <button>
+        <br /> Add{' '}
+      </button>
     </form>
   )
 }

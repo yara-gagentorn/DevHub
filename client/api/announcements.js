@@ -23,6 +23,15 @@ export function addAnnouncement(announcement) {
     .catch(logError)
 }
 
+export function deleteAnnouncement(id) {
+  return request
+    .delete(`${rootUrl}/announcements/${id}`)
+    .then((res) => {
+      return res.body
+    })
+    .catch(logError)
+}
+
 function logError(err) {
   if (err.response.text === 'Username Taken') {
     throw new Error('Username already taken - please choose another')

@@ -5,9 +5,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { getUser } from '../api/api'
 import Nav from './Nav'
 import Register from './Register'
-
 import Todos from '../subcomponents/Todos/Todos'
-
 import Announcements from '../subcomponents/Announcements/Announcements'
 
 import { useDispatch } from 'react-redux'
@@ -39,6 +37,7 @@ function App() {
     <>
       <Nav />
       <Announcements />
+      <Todos />
     </>
   )
 }

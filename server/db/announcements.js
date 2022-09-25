@@ -4,6 +4,7 @@ module.exports = {
   getAllAnnouncements,
   getAnnouncementsByDate,
   addAnnouncement,
+  deleteAnnouncement,
 }
 
 // GET all announcements
@@ -25,6 +26,13 @@ function getAnnouncementsByDate(date) {
 }
 
 function addAnnouncement(announcement, db = connection) {
-  console.log('added resource to DB')
   return db('announcements').insert(announcement)
+}
+
+function deleteAnnouncement(id, db = connection) {
+  return db(`announcements`)
+    .where('id', id)
+    .first()
+    .delete()
+    .then(getAllAnnouncements)
 }
