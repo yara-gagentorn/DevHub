@@ -11,6 +11,7 @@ import Todos from '../subcomponents/Todos/Todos'
 
 import { useDispatch } from 'react-redux'
 import { clearLoggedInUser, updateLoggedInUser } from '../slices/user'
+import Journal from '../subcomponents/Journal/Journal'
 
 function App() {
   useCacheUser()
@@ -37,7 +38,6 @@ function App() {
   return (
     <>
       <Nav />
-      <Resources />
     </>
   )
 }

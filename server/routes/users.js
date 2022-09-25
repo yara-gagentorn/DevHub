@@ -1,22 +1,20 @@
 const express = require('express')
-const checkJwt = require('../auth0')
+const { checkJwt, getUserRoles } = require('../auth0')
 
 const db = require('../db/users')
 const router = express.Router()
 
 // TODO: use checkJwt as middleware
-// GET /api/v1/users
-router.get('/', checkJwt, (req, res) => {
-  const auth0_id = req.user?.sub
-
-  if (!auth0_id) {
-    res.send(null)
-  } else {
-    db.getUser(auth0_id)
-      .then((user) => {
-        res.json(user ? user : null)
-      })
-      .catch((err) => res.status(500).send(err.message))
+// GET /api/v1/users/
+router.get('/', checkJwt, async (req, res) => {
+  try {
+    const auth0Id = req.user?.sub
+    const user = await db.getUserById(auth0Id)
+    const roles = await getUserRoles(auth0Id)
+    res.json({ ...user, roles })
+  } catch (err) {
+    console.error(err)
+    res.status(500).send(err.message)
   }
 })
 
