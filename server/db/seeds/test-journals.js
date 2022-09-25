@@ -43,6 +43,24 @@ exports.seed = (knex) => {
           URL_2: null,
           URL_3: null,
         },
+        {
+          id: 5,
+          user_id: 1,
+          date: new Date('September 8, 2022, 12:05:00'),
+          content: '',
+          URL_1: null,
+          URL_2: null,
+          URL_3: null,
+        },
+        {
+          id: 6,
+          user_id: 2,
+          date: new Date('September 8, 2022, 12:05:00'),
+          content: '',
+          URL_1: null,
+          URL_2: null,
+          URL_3: null,
+        },
       ])
     )
 }
