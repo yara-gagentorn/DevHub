@@ -7,7 +7,8 @@ import Nav from './Nav'
 import Register from './Register'
 
 import Todos from '../subcomponents/Todos/Todos'
-
+import Cohort from './Cohort'
+import Profiles from './Profiles'
 import Announcements from '../subcomponents/Announcements/Announcements'
 
 import { useDispatch } from 'react-redux'
@@ -37,13 +38,8 @@ function App() {
 
   return (
     <>
-      <Todos />
       <Nav />
-      {/* <Announcements /> */}
-      <Routes>
-        <Route path="/" element={<Todos />} />
-        <Route path="register" element={<Register />} />
-      </Routes>{' '}
+      <Profiles></Profiles>
     </>
   )
 }

@@ -5,6 +5,7 @@ module.exports = {
   getUser,
   createUser,
   getAllUserImages,
+  getProfileInfo,
 }
 
 function userExists(username, db = connection) {
@@ -25,4 +26,16 @@ function createUser(user, db = connection) {
 
 function getAllUserImages(db = connection) {
   return db('users').select('id', 'first_name', 'last_name', 'profile_picture')
+}
+
+function getProfileInfo(db = connection) {
+  return db('users').select(
+    'id',
+    'first_name',
+    'last_name',
+    'cohort',
+    'pronouns',
+    'github_link',
+    'profile_picture'
+  )
 }
