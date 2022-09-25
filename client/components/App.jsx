@@ -5,6 +5,8 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { getUser } from '../api/api'
 import Nav from './Nav'
 import Register from './Register'
+import Resources from '../subcomponents/Resources/Resources'
+import Profile from '../subcomponents/Profile/Profile'
 
 import Todos from '../subcomponents/Todos/Todos'
 import Cohort from './Cohort'
@@ -40,6 +42,8 @@ function App() {
     <>
       <Nav />
       <Profiles></Profiles>
+      <Resources />
+      <Profile />
     </>
   )
 }

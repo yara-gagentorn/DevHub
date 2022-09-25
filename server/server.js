@@ -7,6 +7,7 @@ const userRoutes = require('./routes/users')
 const announcementsRoutes = require('./routes/announcements')
 const cohortRoutes = require('./routes/cohort')
 const profilesRoutes = require('./routes/profiles')
+const resourceRoutes = require('./routes/resources')
 
 const server = express()
 
@@ -19,6 +20,7 @@ server.use('/api/v1/todos', todosRoutes)
 server.use('/api/v1/announcements', announcementsRoutes)
 server.use('/api/v1/cohort', cohortRoutes)
 server.use('/api/v1/profiles', profilesRoutes)
+server.use('/api/v1/resources', resourceRoutes)
 
 server.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'index.html'))
