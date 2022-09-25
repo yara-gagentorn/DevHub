@@ -5,7 +5,7 @@ const db = require('../db/users')
 const router = express.Router()
 
 // TODO: use checkJwt as middleware
-// GET /api/v1/users/isadmin
+// GET /api/v1/users/
 router.get('/', checkJwt, async (req, res) => {
   try {
     const auth0Id = req.user?.sub
