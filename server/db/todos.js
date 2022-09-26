@@ -15,7 +15,6 @@ module.exports = {
 
 // GET all todos
 function getAllTodos(db = connection) {
-  console.log('hitting DB get all todos')
   return db('user_todos')
     .join('todos', 'user_todos.todo_id', 'todos.id')
     .join('users', 'user_todos.user_id', 'users.id')

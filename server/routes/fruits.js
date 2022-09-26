@@ -1,10 +1,15 @@
 const express = require('express')
-const checkJwt = require('../auth0')
+const jwtAuthz = require('express-jwt-authz')
+const { checkJwt } = require('../auth0')
 const db = require('../db/fruits')
 
 const router = express.Router()
 
 module.exports = router
+
+const checkAdmin = jwtAuthz(['manage:todos'], {
+  customScopeKey: 'permissions',
+})
 
 // A public endpoint that anyone can access
 // GET /api/v1/fruits
@@ -20,7 +25,7 @@ router.get('/', async (req, res) => {
 
 // use checkJwt as middleware
 // POST /api/v1/fruits
-router.post('/', checkJwt, async (req, res) => {
+router.post('/', checkJwt, checkAdmin, async (req, res) => {
   const { fruit } = req.body
   const auth0Id = req.user?.sub
   const newFruit = {
