@@ -8,7 +8,6 @@ function AdminAddTodo(props) {
   const currentUserId = 2
 
   const loadTodos = props.loadTodos
-  const [clicked, setClicked] = useState(false)
 
   const [input, setInput] = useState('')
   const [select, setSelect] = useState('me')
@@ -63,12 +62,6 @@ function AdminAddTodo(props) {
 
     const arrayOfNewUserTodo = getArrayOfNewUserTodo(select)
 
-    // a.map((newUserTodo) =>
-    //   addTodo(newTodo, newUserTodo)
-    //     .then(() => loadTodos())
-    //     .catch(() => {})
-    // )
-
     if (arrayOfNewUserTodo.length == 1) {
       addTodo(newTodo, newUserTodo)
         .then(() => loadTodos())
@@ -81,8 +74,6 @@ function AdminAddTodo(props) {
 
     props.setShowAdd(false)
   }
-
-  function handleSelectForMultiple(event) {}
 
   function handleSelectFor(event) {
     setSelect(event.target.value)
@@ -99,21 +90,6 @@ function AdminAddTodo(props) {
         <option value="all">all</option>
         <option value="some-people">selected people</option>
       </select>
-      {/* {!!selectMultiple && (
-            <>
-              <label htmlFor="select-people">Select person </label>
-              <select
-                name="select-people"
-                defaultValue=""
-                onChange={handleSelectForMultiple}
-              >
-                <option value="1">Rong</option>
-                <option value="2">Yara</option>
-                <option value="3">Vanessa</option>
-                <option value="4">Sebastian</option>
-              </select>
-            </>
-          )} */}
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-full text-base"
         onClick={handleSubmit}
