@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getUserProfileInfo } from '../../api/profiles'
+import { getUserProfileInfo, editProfile } from '../../api/profiles'
 
 export default function EditMyProfile() {
   const { id } = useParams()
@@ -21,6 +21,11 @@ export default function EditMyProfile() {
   function handleChange(e) {
     const { name, value } = e.target
     setProfilesInfo({ ...profilesInfo, [name]: value })
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    await editProfile(profilesInfo)
   }
 
   useEffect(() => {
@@ -78,6 +83,7 @@ export default function EditMyProfile() {
         value={profilesInfo.profile_picture}
         onChange={handleChange}
       ></input>
+      <button onClick={handleSubmit}>Save Changes</button>
     </form>
   )
 }
