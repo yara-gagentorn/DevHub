@@ -6,6 +6,7 @@ import { getUser } from '../api/api'
 import Nav from './Nav'
 import Register from './Register'
 import Resources from '../subcomponents/Resources/Resources'
+import Announcments from '../subcomponents/Announcements/Announcements'
 
 import Todos from '../subcomponents/Todos/Todos'
 
@@ -37,10 +38,11 @@ function App() {
   return (
     <>
       <div className="bg-vsblack">
-        <div className="grid grid-cols-1 grid-rows-6 text-vslightblue m-auto w-96">
+        <div className="flex flex-col justify-center w-auto text-center  text-vslightblue">
+          {/* <div className="grid grid-cols-1 grid-rows-6 text-vslightblue m-auto w-96"> */}
           <Nav />
-          <div>Todos</div>
-          <div>Announcements</div>
+          <Todos />
+          {/* <Announcments /> */}
           <Resources />
           <div>On The floor</div>
           <div>Journals</div>

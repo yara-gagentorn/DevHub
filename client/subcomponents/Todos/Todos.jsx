@@ -33,25 +33,27 @@ function Todos() {
 
   return (
     <>
-      <h1>To do:</h1>
-      <div className="font-serif ">
+      <div className="flex flex-col relative bg-vslightblack rounded p-1.5 m-2 mt-1 text-left">
+        <span>Things to do:</span>
+
         {todos.map((todo) => (
           <Todo key={todo.id} todo={todo} loadTodos={loadTodos} />
         ))}
         {!addClicked && (
-          <button
+          <img
+            src="images/addico.png"
+            className='absolute top-2 right-1'
             onClick={handleClick}
-            className="bg-blue hover:bg-blue-700 text-white py-1 px-2 rounded-full text-base"
-          >
-            Add
-          </button>
+            alt="add"
+          />
+        )}
+
+        {addClicked && (
+          <div>
+            <AddTodo loadTodos={loadTodos} />
+          </div>
         )}
       </div>
-      {addClicked && (
-        <div>
-          <AddTodo loadTodos={loadTodos} />
-        </div>
-      )}
     </>
   )
 }
