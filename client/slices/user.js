@@ -1,8 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const emptyUser = {
-  auth0Id: '',
-  username: '',
+  id: '',
+  first_name: '',
+  last_name: '',
+  cohort: '',
+  auth0_id: '',
+  profile_picture: '',
+  pronouns: '',
+  github_link: '',
+  roles: '',
 }
 
 const slice = createSlice({

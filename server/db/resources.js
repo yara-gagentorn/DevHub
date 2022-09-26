@@ -7,7 +7,6 @@ module.exports = {
 
 // GET all todos
 function getAllResources(db = connection) {
-  console.log('hitting DB get all resources')
   return db('resources')
     .join('users', 'resources.user_id', 'users.id')
     .select(

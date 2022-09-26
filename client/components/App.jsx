@@ -5,10 +5,10 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { getUser } from '../api/api'
 import Nav from './Nav'
 import Register from './Register'
+import Todos from '../subcomponents/Todos/Todos'
+import Announcements from '../subcomponents/Announcements/Announcements'
 import Resources from '../subcomponents/Resources/Resources'
 import Announcments from '../subcomponents/Announcements/Announcements'
-
-import Todos from '../subcomponents/Todos/Todos'
 
 import { useDispatch } from 'react-redux'
 import { clearLoggedInUser, updateLoggedInUser } from '../slices/user'

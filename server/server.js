@@ -1,10 +1,10 @@
 const path = require('path')
 const express = require('express')
 
+const announcementsRoutes = require('./routes/announcements')
 const fruitRoutes = require('./routes/fruits')
 const todosRoutes = require('./routes/todos')
 const userRoutes = require('./routes/users')
-const announcementsRoutes = require('./routes/announcements')
 const resourceRoutes = require('./routes/resources')
 const journalRoutes = require('./routes/journal')
 
