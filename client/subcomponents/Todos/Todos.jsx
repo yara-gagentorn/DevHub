@@ -24,8 +24,6 @@ function Todos() {
     loadTodos()
   }, [])
 
-  console.log(todos)
-
   function handleClick(event) {
     event.preventDefault()
     setAddClicked(!addClicked)
@@ -33,8 +31,8 @@ function Todos() {
 
   return (
     <>
-      <h1>To do:</h1>
-      <div className="font-serif ">
+      <div className="bg-[#FEC02D] text-white text-center">
+        <h1>To do:</h1>
         {todos.map((todo) => (
           <Todo key={todo.id} todo={todo} loadTodos={loadTodos} />
         ))}

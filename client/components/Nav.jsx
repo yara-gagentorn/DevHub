@@ -25,7 +25,7 @@ function Nav() {
 
   return (
     <>
-      <nav className="bg-slate-600">
+      <nav className="bg-[#EF3A58] text-center">
         <Link to="/">Home</Link>
 
         <IfAuthenticated>
