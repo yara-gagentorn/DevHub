@@ -9,21 +9,26 @@ export function getAnnouncements() {
     .catch(logError)
 }
 
-export function addAnnouncement(announcement, token) {
+export function getAnnouncementsByDate(date) {
   return request
-    .post(`${rootUrl}/announcements`)
-    .set('authorization', `Bearer ${token}`)
-    .send({ announcement })
-    .then((res) => res.body.announcements)
+    .get(`${rootUrl}/announcements/${date}`)
+    .then((res) => res.body)
     .catch(logError)
 }
 
-export function updateAnnouncements(announcements, token) {
+export function addAnnouncement(announcement) {
   return request
-    .put(`${rootUrl}/announcements`)
-    .set('authorization', `Bearer ${token}`)
-    .send({ announcements })
-    .then((res) => res.body.announcements)
+    .post(`${rootUrl}/announcements/`)
+    .send(announcement)
+    .catch(logError)
+}
+
+export function deleteAnnouncement(id) {
+  return request
+    .delete(`${rootUrl}/announcements/${id}`)
+    .then((res) => {
+      return res.body
+    })
     .catch(logError)
 }
 

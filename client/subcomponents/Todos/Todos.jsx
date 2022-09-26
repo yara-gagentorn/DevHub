@@ -33,8 +33,8 @@ function Todos() {
   //console.log('current todos for user 2', todos)
   return (
     <>
-      <h1>To do:</h1>
-      <div className="font-serif ">
+      <div className="bg-[#FEC02D] text-white text-center">
+        <h1>To do:</h1>
         {todos.map((todo) => (
           <Todo
             key={todo.user_todos_id}

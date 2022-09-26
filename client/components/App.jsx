@@ -5,10 +5,13 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { getUser } from '../api/api'
 import Nav from './Nav'
 import Register from './Register'
-
+import Cohort from './Cohort'
+import Profile from '../subcomponents/Profile/Profile'
+import MyProfile from '../subcomponents/Profile/MyProfile'
+import EditMyProfile from '../subcomponents/Profile/EditMyProfile'
 import Todos from '../subcomponents/Todos/Todos'
-
 import Announcements from '../subcomponents/Announcements/Announcements'
+import Resources from '../subcomponents/Resources/Resources'
 
 import { useDispatch } from 'react-redux'
 import { clearLoggedInUser, updateLoggedInUser } from '../slices/user'
@@ -37,6 +40,9 @@ function App() {
 
   return (
     <>
+      <Nav />
+      <Announcements />
+      <Resources />
       <Todos />
     </>
   )

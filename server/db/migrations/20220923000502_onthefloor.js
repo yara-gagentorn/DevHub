@@ -7,8 +7,8 @@ exports.up = function (knex) {
     table.increments('id'),
       table.integer('user_id').references(),
       table.date('date'),
-      table.time('time_start'),
-      table.time('time_finish')
+      table.integer('time_start'),
+      table.integer('time_finish')
   })
 }
 

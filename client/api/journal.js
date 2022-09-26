@@ -2,22 +2,18 @@ import request from 'superagent'
 
 const rootUrl = '/api/v1'
 
-export function getAllResources() {
+export function getJournalByIdNDate(id, date) {
   return request
-    .get(`${rootUrl}/resources`)
-    .then((res) => res.body.resources)
+    .get(`${rootUrl}/journal/${id}/${date}`)
+    .then((res) => res.body.journalsByDateNId[0])
     .catch(logError)
 }
 
-export function getResourcesByDate(date) {
+export function updateJournalByIdNDate(id, date, journal) {
   return request
-    .get(`${rootUrl}/resources/${date}`)
-    .then((res) => res.body)
+    .post(`${rootUrl}/journal/${id}/${date}`)
+    .send(journal)
     .catch(logError)
-}
-
-export function addResource(resource) {
-  return request.post(`${rootUrl}/resources/`).send(resource).catch(logError)
 }
 
 function logError(err) {

@@ -2,22 +2,12 @@ import request from 'superagent'
 
 const rootUrl = '/api/v1'
 
-export function getAllResources() {
-  return request
-    .get(`${rootUrl}/resources`)
-    .then((res) => res.body.resources)
-    .catch(logError)
+export function getUserProfileInfo() {
+  return request.get(`${rootUrl}/profiles`).then((res) => res.body.profile)
 }
 
-export function getResourcesByDate(date) {
-  return request
-    .get(`${rootUrl}/resources/${date}`)
-    .then((res) => res.body)
-    .catch(logError)
-}
-
-export function addResource(resource) {
-  return request.post(`${rootUrl}/resources/`).send(resource).catch(logError)
+export function editProfile(profile) {
+  return request.post(`${rootUrl}/profiles/`).send(profile).catch(logError)
 }
 
 function logError(err) {
