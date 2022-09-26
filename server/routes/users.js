@@ -9,7 +9,7 @@ const router = express.Router()
 router.get('/', checkJwt, async (req, res) => {
   try {
     const auth0Id = req.user?.sub
-    const user = await db.getUserById(auth0Id)
+    const user = await db.getUser(auth0Id)
     const roles = await getUserRoles(auth0Id)
     res.json({ ...user, roles })
   } catch (err) {

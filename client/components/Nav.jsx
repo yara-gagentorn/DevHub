@@ -33,10 +33,9 @@ function Nav() {
             Log off
           </Link>
           <p>
-            <span role="img" alt={user?.icon}>
-              {user?.icon}
-            </span>
-            {' ' + user.username}
+            <img className="" src={user.profile_picture} alt={user?.icon} />
+
+            {' ' + user.first_name}
           </p>
         </IfAuthenticated>
         <IfNotAuthenticated>
