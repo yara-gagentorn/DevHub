@@ -6,11 +6,11 @@ import { getUser } from '../api/api'
 import Nav from './Nav'
 import Register from './Register'
 import Resources from '../subcomponents/Resources/Resources'
-import Profile from '../subcomponents/Profile/Profile'
+import MyProfile from '../subcomponents/Profile/MyProfile'
 
 import Todos from '../subcomponents/Todos/Todos'
 import Cohort from './Cohort'
-import Profiles from './Profiles'
+import Profile from '../subcomponents/Profile/Profile'
 import Announcements from '../subcomponents/Announcements/Announcements'
 
 import { useDispatch } from 'react-redux'
@@ -41,9 +41,11 @@ function App() {
   return (
     <>
       <Nav />
-      <Profiles></Profiles>
-      <Resources />
-      <Profile />
+      <Routes>
+        <Route path="/cohort" element={<Cohort />} />
+        <Route path="/:id/profile" element={<MyProfile />} />
+        <Route path="/:id/profile/othersprofile" element={<Profile />} />
+      </Routes>
     </>
   )
 }

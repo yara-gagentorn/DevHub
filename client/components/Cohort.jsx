@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getUserProfile } from '../api/cohort'
+import { Link } from 'react-router-dom'
 
 function Cohort() {
   const [profiles, setProfiles] = useState([])
@@ -27,9 +28,12 @@ function Cohort() {
             <p key={profile.id}>
               {profile.first_name}
               {profile.last_name}
-              <button>
-                <img src={profile.profile_picture} alt="" />
-              </button>
+              <Link to={`/${profile.id}/profile`}>
+                <img
+                  src={profile.profile_picture}
+                  alt={`${profile.first_name}`}
+                />
+              </Link>
             </p>
           )
         })}
