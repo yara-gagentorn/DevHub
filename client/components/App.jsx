@@ -41,12 +41,9 @@ function App() {
   return (
     <>
       <Nav />
-      <Routes>
-        <Route path="/cohort" element={<Cohort />} />
-        <Route path="/:id/myprofile" element={<MyProfile />} />
-        <Route path="/:id/myprofile/edit" element={<EditMyProfile />} />
-        <Route path="/:id/profile/othersprofile" element={<Profile />} />
-      </Routes>
+      <Announcements />
+      <Resources />
+      <Todos />
     </>
   )
 }
