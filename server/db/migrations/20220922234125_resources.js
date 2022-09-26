@@ -7,6 +7,7 @@ exports.up = function (knex) {
     table.increments('id'),
       table.string('description'),
       table.string('URL'),
+      table.string('icon'),
       table.date('date'),
       table.integer('user_id')
   })

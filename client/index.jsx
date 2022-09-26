@@ -10,7 +10,7 @@ import store from './store'
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Auth0Provider
-      domain="https://pohutukawa-sebastian.au.auth0.com"
+      domain="pohutukawa-sebastian.au.auth0.com"
       clientId="sVWEvoTEAXWohvxZuqOEAGTlCuDGwM7C"
       redirectUri={window.location.origin}
       audience="https://devhub/api"
