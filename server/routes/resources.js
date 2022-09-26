@@ -1,5 +1,5 @@
 const express = require('express')
-const checkJwt = require('../auth0')
+const { checkJwt } = require('../auth0')
 const db = require('../db/resources')
 
 const router = express.Router()
@@ -30,6 +30,7 @@ router.post('/', async (req, res) => {
   }
 })
 
+// GET from api/v1/:date
 router.get('/:date', async (req, res) => {
   const selectedDate = new Date(req.params.date).toDateString()
 
