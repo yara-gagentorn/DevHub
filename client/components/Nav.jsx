@@ -23,26 +23,33 @@ function Nav() {
 
   return (
     <>
-      <nav className="bg-slate-600">
-        <Link to="/">Home</Link>
+      <div className="grid grid-cols-3 grid-rows-1 bg-vslightblack rounded ">
+        <div className="grid grid-cols-1 grid-rows-3">
+          <span className="m-auto">Wed</span>
+          <span className="m-auto">7</span>
+          <span className="m-auto">September</span>
+        </div>
+        <nav>
+          <Link to="/">Home</Link>
 
-        <IfAuthenticated>
-          <Link to="/" onClick={handleLogoff}>
-            Log off
-          </Link>
-          <p>
-            <span role="img" alt={user?.icon}>
-              {user?.icon}
-            </span>
-            {' ' + user.username}
-          </p>
-        </IfAuthenticated>
-        <IfNotAuthenticated>
-          <Link to="/" onClick={handleSignIn}>
-            Sign In
-          </Link>
-        </IfNotAuthenticated>
-      </nav>
+          <IfAuthenticated>
+            <Link to="/" onClick={handleLogoff}>
+              Log off
+            </Link>
+            <p>
+              <span role="img" alt={user?.icon}>
+                {user?.icon}
+              </span>
+              {' ' + user.username}
+            </p>
+          </IfAuthenticated>
+          <IfNotAuthenticated>
+            <Link to="/" onClick={handleSignIn}>
+              Sign In
+            </Link>
+          </IfNotAuthenticated>
+        </nav>
+      </div>
     </>
   )
 }

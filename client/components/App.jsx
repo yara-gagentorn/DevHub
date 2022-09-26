@@ -36,8 +36,16 @@ function App() {
 
   return (
     <>
-      <Nav />
-      <Resources />
+      <div className="bg-vsblack">
+        <div className="grid grid-cols-1 grid-rows-6 text-vslightblue m-auto w-96">
+          <Nav />
+          <div>Todos</div>
+          <div>Announcements</div>
+          <Resources />
+          <div>On The floor</div>
+          <div>Journals</div>
+        </div>
+      </div>
     </>
   )
 }
