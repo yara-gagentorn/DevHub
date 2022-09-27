@@ -30,6 +30,7 @@ function Todo(props) {
   }
 
   function handleDelete() {
+   
     deleteTodo(user_todos_id)
       .then(() => loadTodos())
       .catch(() => {})
@@ -55,7 +56,6 @@ function Todo(props) {
           content
         )}
 
-
         {!!inTrello && (
           <span className="">
             <img
@@ -67,13 +67,13 @@ function Todo(props) {
         )}
 
         {!!isPersonal && (
-          <span className=" text-zinc-400" onClick={handleDelete}>
-             <img
+          <span className=" text-zinc-400">
+            <img
+              onClick={handleDelete}
               src="images/deleteico.png"
               className="inline ml-2 mb-1 w-4"
               alt="delete"
             />
-           
           </span>
         )}
       </div>

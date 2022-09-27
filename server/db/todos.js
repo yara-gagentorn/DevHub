@@ -80,13 +80,10 @@ function updateTodo(newTodo, db = connection) {
 }
 
 async function deleteTodo(id, db = connection) {
-  return db('todos')
+  console.log('from delete db', id)
+  return db('user_todos')
     .where('id', id)
-    .first()
     .delete()
-    .then(() => {
-      return db('user_todos').where('todo_id', id).delete()
-    })
     .then(() => db)
 }
 
