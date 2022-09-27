@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { addTodo } from '../../api/todos'
 
 function AddTodo(props) {
+  const setAddClicked = props.setAddClicked
+
   const loadTodos = props.loadTodos
   const [input, setInput] = useState('')
   const [clicked, setClicked] = useState(true)
@@ -11,7 +13,6 @@ function AddTodo(props) {
   }
 
   function handleSubmit(event) {
-    // addTodo
     event.preventDefault()
     const newTodo = {
       content: input,
@@ -34,13 +35,18 @@ function AddTodo(props) {
     <>
       {clicked && (
         <>
-          <input type="text" onChange={handleChange} />
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-full text-base"
+          <input
+            type="text"
+            className="text-vsblack  rounded w-5/6"
+            onChange={handleChange}
+            name="newTodo"
+          />
+          <img
+            src="images/addico.png"
+            className="inline ml-2 absolute right-1 bottom-1"
             onClick={handleSubmit}
-          >
-            Add
-          </button>{' '}
+            alt="add"
+          />
         </>
       )}
     </>

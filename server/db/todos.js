@@ -6,6 +6,7 @@ module.exports = {
   getTodosByUserIdAndDate,
   updateTodo,
   addTodo,
+  addMultipleTodo,
   deleteTodo,
 }
 
@@ -22,7 +23,8 @@ function getAllTodos(db = connection) {
     .join('todos', 'user_todos.todo_id', 'todos.id')
     .join('users', 'user_todos.user_id', 'users.id')
     .select(
-      'todos.id as id',
+      'user_todos.id as user_todos_id',
+      'todos.id as todo_id',
       'users.id as user_id',
       'publish_date as date',
       'content',
@@ -38,7 +40,7 @@ function getTodosByUserId(id) {
   return getAllTodos().where('user_id', id)
 }
 
-//GET todos by user id
+//GET todos by user id and date
 function getTodosByUserIdAndDate(id, date) {
   return getAllTodos().where('users_id', id).where('publish_date', date)
 }
@@ -49,24 +51,39 @@ function addTodo(todo, usertodo, db = connection) {
     .then((id) => db('user_todos').insert({ ...usertodo, todo_id: id }))
 }
 
-function updateTodo(newTodo, user, db = connection) {
-  return db('user_todos')
-    .where('todo_id', newTodo.id)
-    .first()
-    .then(() => {
-      return db('user_todos').where('todo_id', newTodo.id).update(newTodo)
+function addMultipleTodo(todo, usersTodos, db = connection) {
+  const { publish_date, content, challenge_link, is_trello } = todo
+  return db('todos')
+    .insert({ publish_date, content, challenge_link, is_trello })
+    .then(([id]) => {
+      return Promise.all(
+        usersTodos.map((userTodo) => {
+          return db('user_todos').insert({ ...userTodo, todo_id: id })
+        })
+      )
     })
-    .then(() => db)
+    .then((results) => results.flat())
+}
+
+function updateTodo(newTodo, db = connection) {
+  const { id, is_done } = newTodo
+  return (
+    db('user_todos')
+      .where('id', id)
+      .update({ is_done })
+      // //.where('user_id', newTodo.user_id)
+      // .then(() => {
+      //   return db('user_todos').where('user_id', user_id).update({ is_done })
+      // })
+      .then(() => db)
+  )
 }
 
 async function deleteTodo(id, db = connection) {
-  return db('todos')
+  console.log('from delete db', id)
+  return db('user_todos')
     .where('id', id)
-    .first()
     .delete()
-    .then(() => {
-      return db('user_todos').where('todo_id', id).delete()
-    })
     .then(() => db)
 }
 

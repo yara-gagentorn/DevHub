@@ -1,77 +1,79 @@
+export default Announcements
 import React, { useState, useEffect } from 'react'
-
-import { getAnnouncements } from '../../api/announcements'
-import AddAnnouncement from './AddAnnouncements'
-import Announcement from './Announcement'
+import AddAnnouncement from './AddAnnouncement'
+import {
+  deleteAnnouncement,
+  getAnnouncementsByDate,
+} from '../../api/announcements'
 
 function Announcements() {
-  const announcements = [
-    {
-      id: 1,
-      user_id: 1,
-      date: '23/9/2022',
-      message: 'Next Tuesday we will have our last yoga session',
-      URL: '',
-    },
-    {
-      id: 2,
-      user_id: 1,
-      date: '23/9/2022',
-      message:
-        'Ahmad will be here on Sunday, please do not come  in and indulge him:)',
-      URL: '',
-    },
-    {
-      id: 3,
-      user_id: 1,
-      date: '23/9/2022',
-      message: 'Have fun on your final project, enjoy!',
-      URL: '',
-    },
-  ]
+  const [announcements, setAnnouncements] = useState([])
+  const [showAdd, setShowAdd] = useState(false)
 
-  const [addClicked, setAddClicked] = useState(false)
+  //TO DO make date dynamic
+  const testDate = new Date('September 7, 2022, 12:05:00')
 
-  function loadAnnouncements() {
-    return true
+  async function loadAnnouncements() {
+    try {
+      const allAnnouncements = await getAnnouncementsByDate(
+        Date.parse(testDate)
+      )
+      setAnnouncements(allAnnouncements)
+    } catch (error) {
+      console.error(error.message)
+    }
+  }
+
+  function showAddButton() {
+    setShowAdd(true)
   }
 
   useEffect(() => {
     loadAnnouncements()
   }, [])
 
-  function handleClick(event) {
-    event.preventDefault()
-    setAddClicked(!addClicked)
+  function handelDelete(id) {
+    deleteAnnouncement(id)
+      .then(() => loadAnnouncements())
+      .catch(() => {})
   }
 
   return (
     <>
-      <h1>ANNOUNCEMENTS:</h1>
-      <div className="w-50">
-        {announcements.map((announcement) => (
-          <Announcement
-            key={announcement.id}
-            announcement={announcement}
-            loadannouncement={loadAnnouncements}
-          />
-        ))}
-        {!addClicked && (
-          <button
-            onClick={handleClick}
-            className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-full text-base"
-          >
-            Add
-          </button>
-        )}
+      <div className="flex flex-col relative bg-vslightblack rounded p-2 pl-3.5 m-2 mt-1 text-left">
+        {/* <span className="text-vspink">Announcements:</span> */}
+        <ul className="text-vsorange">
+          {announcements.map((announcement) => {
+            return (
+              <>
+                <li key={announcement.id} className="flex text-vsorange">
+                  <a className="" href={announcement.url}>
+                    <img
+                      src="images/annico.png"
+                      className="inline mr-2 mb-1 w-4"
+                      alt="add"
+                    />
+                    {`${announcement.message}`}
+                  </a>
+                  {/* <button
+                className="text-red-700"
+                onClick={() => handelDelete(announcement.id)}
+              >
+                DELETE
+              </button> */}
+                </li>
+              </>
+            )
+          })}
+        </ul>
+
+        {/* <button onClick={showAddButton}>Add</button> */}
+        <AddAnnouncement
+          loadAnnouncements={loadAnnouncements}
+          showAdd={showAdd}
+          setShowAdd={setShowAdd}
+        />
       </div>
-      {addClicked && (
-        <div>
-          <AddAnnouncement loadAnnouncement={loadannouncements} />
-        </div>
-      )}
     </>
   )
 }
-
-export default Announcements

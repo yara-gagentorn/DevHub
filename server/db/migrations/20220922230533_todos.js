@@ -9,6 +9,7 @@ exports.up = function (knex) {
     table.string('content')
     table.string('challenge_link')
     table.boolean('is_trello')
+    table.integer('created_by_id')
   })
 }
 
