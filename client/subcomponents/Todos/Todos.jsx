@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import Todo from './Todo'
 import { getTodosByUserId } from '../../api/todos'
-// import AddTodo from './AddTodo'
+import AddTodo from './AddTodo'
 import AdminAddTodo from './AdminAddTodo'
 
 function Todos() {
@@ -30,7 +30,6 @@ function Todos() {
     setShowAdd(!showAdd)
   }
 
-  //console.log('current todos for user 2', todos)
   return (
     <>
       <div className="flex flex-col relative bg-vslightblack rounded p-1.5 m-2 mt-1 text-left">
@@ -45,38 +44,29 @@ function Todos() {
           />
         ))}
 
-        {!addClicked && (
+        {
           <img
             src="images/addico.png"
-            className="absolute top-2 right-1"
+            className="absolute top-1 right-1"
             onClick={handleClick}
             alt="add"
           />
-        )}
+        }
 
-        {addClicked && (
+        {showAdd && (
           <div>
             <AddTodo loadTodos={loadTodos} />
           </div>
         )}
 
-
-        <button
+        {/* <button
           //className={addClicked ? 'invisible' : 'visible'}
           onClick={handleClick}
           className={showAdd ? 'hidden' : ''}
           //className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-full text-base"
         >
           Add
-        </button>
-      </div>
-      <div>
-        <AdminAddTodo
-          showAdd={showAdd}
-          setShowAdd={setShowAdd}
-          loadTodos={loadTodos}
-        />
-
+        </button> */}
       </div>
     </>
   )
