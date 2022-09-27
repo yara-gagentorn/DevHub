@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react'
 
 import Todo from './Todo'
-import { getTodos, getTodosByUserId } from '../../api/todos'
-import AddTodo from './AddTodo'
+import { getTodosByUserId } from '../../api/todos'
+// import AddTodo from './AddTodo'
+import AdminAddTodo from './AdminAddTodo'
 
 function Todos() {
   const [todos, setTodos] = useState([])
-  const [addClicked, setAddClicked] = useState(false)
+  const [showAdd, setShowAdd] = useState(false)
+  const currentUserId = 2
 
   function loadTodos() {
-    getTodosByUserId(2)
+    getTodosByUserId(currentUserId)
       .then((todos) => {
         setTodos(todos)
       })
       .catch(() => {
-        //dispatch(showError(err.message))
         return false
       })
     return true
@@ -26,30 +27,39 @@ function Todos() {
 
   function handleClick(event) {
     event.preventDefault()
-    setAddClicked(!addClicked)
+    setShowAdd(!showAdd)
   }
 
+  //console.log('current todos for user 2', todos)
   return (
     <>
       <div className="bg-[#FEC02D] text-white text-center">
         <h1>To do:</h1>
         {todos.map((todo) => (
-          <Todo key={todo.id} todo={todo} loadTodos={loadTodos} />
+          <Todo
+            key={todo.user_todos_id}
+            todo={todo}
+            loadTodos={loadTodos}
+            currentUserId={currentUserId}
+          />
         ))}
-        {!addClicked && (
-          <button
-            onClick={handleClick}
-            className="bg-blue hover:bg-blue-700 text-white py-1 px-2 rounded-full text-base"
-          >
-            Add
-          </button>
-        )}
+
+        <button
+          //className={addClicked ? 'invisible' : 'visible'}
+          onClick={handleClick}
+          className={showAdd ? 'hidden' : ''}
+          //className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-full text-base"
+        >
+          Add
+        </button>
       </div>
-      {addClicked && (
-        <div>
-          <AddTodo loadTodos={loadTodos} />
-        </div>
-      )}
+      <div>
+        <AdminAddTodo
+          showAdd={showAdd}
+          setShowAdd={setShowAdd}
+          loadTodos={loadTodos}
+        />
+      </div>
     </>
   )
 }
