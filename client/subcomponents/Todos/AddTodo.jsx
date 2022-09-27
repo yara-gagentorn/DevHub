@@ -39,6 +39,7 @@ function AddTodo(props) {
             type="text"
             className="text-vsblack  rounded w-5/6"
             onChange={handleChange}
+            name="newTodo"
           />
           <img
             src="images/addico.png"

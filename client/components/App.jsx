@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { useCacheUser } from '../auth0-utils'
 import { useAuth0 } from '@auth0/auth0-react'
@@ -15,6 +15,7 @@ import Resources from '../subcomponents/Resources/Resources'
 import Announcments from '../subcomponents/Announcements/Announcements'
 import Journal from '../subcomponents/Journal/Journal'
 import OnTheFloor from '../views/user/OnTheFloor'
+import ThemeSwitch from '../subcomponents/ThemeSwitch/ThemeSwitch'
 
 import { useDispatch } from 'react-redux'
 import { clearLoggedInUser, updateLoggedInUser } from '../slices/user'
@@ -25,6 +26,8 @@ function App() {
   const navigate = useNavigate()
 
   const { isAuthenticated, getAccessTokenSilently } = useAuth0()
+  const [currentTheme, setCurrentTheme] = useState(false) // get current from local storage
+  const [test, setTest] = useState(false)
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -41,16 +44,33 @@ function App() {
     }
   }, [isAuthenticated])
 
+  useEffect(() => {
+    console.log('useEffect!!!!')
+    currentTheme
+      ? localStorage.setItem('theme', 'light')
+      : localStorage.setItem('theme', 'dark')
+    setTest(!test)
+  }, [currentTheme])
+
   return (
     <>
-      <div className="bg-vsblack">
-        <div className="flex flex-col justify-center w-auto text-center  text-vslightblue">
-          <Nav />
-          <Todos />
-          <Announcments />
-          <Resources />
-          <OnTheFloor />
-          <Journal />
+      <div className="dark">
+        {/* <div className={`${currentTheme ? 'dark' : ''}`}> */}
+        <div className="bg-vsblack dark:bg-white dark:text-black">
+          <div className="bg-vsblack m-auto w-[357px]">
+            <div className="flex flex-col justify-center w-auto text-center  text-vslightblue">
+              {/* <ThemeSwitch
+                currentTheme={currentTheme}
+                setCurrentTheme={setCurrentTheme}
+              /> */}
+              <Nav />
+              <Todos />
+              <Announcments />
+              <Resources />
+              <OnTheFloor />
+              <Journal />
+            </div>
+          </div>
         </div>
       </div>
     </>

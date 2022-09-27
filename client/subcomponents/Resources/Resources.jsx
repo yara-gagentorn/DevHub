@@ -34,10 +34,16 @@ function Resources() {
     loadResources()
   }, [])
 
+  function isUsers(id) {
+    console.log(id)
+    if (id == 2) return true
+    else return false
+  }
+
   return (
-    <div className="flex flex-col relative bg-vslightblack rounded p-1.5 m-2 mt-1 text-left">
-      <span className="text-vsgreen">Resources:</span>
-      <ul className="">
+    <div className="flex flex-col relative bg-vslightblack rounded p-2 pl-3.5 m-2 mt-1 text-left">
+      <span className="text-vsgreen text-lg">Resources:</span>
+      <ul>
         {resources.map((resource) => {
           return (
             <li key={resource.id} className="flex">
@@ -48,6 +54,13 @@ function Resources() {
                   alt="ico"
                 />
                 {`${resource.description} (by ${resource.first_name})`}
+                <img
+                  src="/images/deleteico.png"
+                  className={`inline ml-2 mb-1 w-4 ${
+                    !isUsers(resource.user_id) ? 'hidden' : ''
+                  }`}
+                  alt="delete"
+                />
               </a>
             </li>
           )
@@ -55,7 +68,7 @@ function Resources() {
       </ul>
       <img
         src="images/addico.png"
-        className="absolute top-2 right-1"
+        className="absolute w-7 top-2 right-1"
         onClick={showAddButton}
         alt="add"
       />
