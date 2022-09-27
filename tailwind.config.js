@@ -3,6 +3,7 @@ module.exports = {
   content: ['./client/**/*.{html,jsx}'],
   theme: {
     extend: {
+      darkMode: 'class',
       colors: {
         vsblack: '#1e1e1e',
         vsgreen: '#4EC9B0',
@@ -15,10 +16,11 @@ module.exports = {
         vsbrightgreen: '#4EC9B0',
         vsgrey: '#CCCCCC',
         vspink: '#C586C0',
-        vsorange:'#CE9178',
+        vsorange: '#CE9178',
       },
     },
     fontFamily: { sans: ['Droid Sans Mono', 'monospace'] },
+    darkMode: 'class',
   },
   plugins: [],
 }

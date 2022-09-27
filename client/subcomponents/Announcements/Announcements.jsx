@@ -39,40 +39,41 @@ function Announcements() {
   }
 
   return (
-    <div className="flex flex-col relative bg-vslightblack rounded p-1.5 m-2 mt-1 text-left">
-      {/* <span className="text-vspink">Announcements:</span> */}
-      <ul className="text-vsorange">
-        {announcements.map((announcement) => {
-          return (
-            <>
-              {' '}
-              <li key={announcement.id} className="flex text-vsorange">
-                <a className="" href={announcement.url}>
-                  <img
-                    src="images/annico.png"
-                    className="inline mr-2 mb-1 w-4"
-                    alt="add"
-                  />
-                  {`${announcement.message}`}
-                </a>
-                {/* <button
+    <>
+      <div className="flex flex-col relative bg-vslightblack rounded p-2 pl-3.5 m-2 mt-1 text-left">
+        {/* <span className="text-vspink">Announcements:</span> */}
+        <ul className="text-vsorange">
+          {announcements.map((announcement) => {
+            return (
+              <>
+                <li key={announcement.id} className="flex text-vsorange">
+                  <a className="" href={announcement.url}>
+                    <img
+                      src="images/annico.png"
+                      className="inline mr-2 mb-1 w-4"
+                      alt="add"
+                    />
+                    {`${announcement.message}`}
+                  </a>
+                  {/* <button
                 className="text-red-700"
                 onClick={() => handelDelete(announcement.id)}
               >
                 DELETE
               </button> */}
-              </li>
-            </>
-          )
-        })}
-      </ul>
+                </li>
+              </>
+            )
+          })}
+        </ul>
 
-      {/* <button onClick={showAddButton}>Add</button> */}
-      <AddAnnouncement
-        loadAnnouncements={loadAnnouncements}
-        showAdd={showAdd}
-        setShowAdd={setShowAdd}
-      />
-    </div>
+        {/* <button onClick={showAddButton}>Add</button> */}
+        <AddAnnouncement
+          loadAnnouncements={loadAnnouncements}
+          showAdd={showAdd}
+          setShowAdd={setShowAdd}
+        />
+      </div>
+    </>
   )
 }

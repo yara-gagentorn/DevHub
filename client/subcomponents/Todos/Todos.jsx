@@ -32,8 +32,8 @@ function Todos() {
 
   return (
     <>
-      <div className="flex flex-col relative bg-vslightblack rounded p-1.5 m-2 mt-1 text-left">
-        <span className="text-vspink">Things to do:</span>
+      <div className="flex flex-col relative bg-vslightblack rounded p-2 pl-3.5 m-2 mt-1 text-left">
+        <span className="text-vspink text-lg">Things to do:</span>
 
         {todos.map((todo) => (
           <Todo
@@ -47,7 +47,7 @@ function Todos() {
         {
           <img
             src="images/addico.png"
-            className="absolute top-1 right-1"
+            className="absolute w-7 top-1 right-1"
             onClick={handleClick}
             alt="add"
           />

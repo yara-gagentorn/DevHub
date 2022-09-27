@@ -36,37 +36,49 @@ function AddResource(props) {
 
   return (
     <form
-      className={`${showAdd ? '' : 'hidden'} bg-red-500`}
-      onSubmit={handleAddResourceButton}
+      className={`${showAdd ? '' : 'hidden'}`}
+      //onSubmit={handleAddResourceButton}
     >
+      <div className="mb-1">
+        <label>
+          {/* <span className="mr-1 inline">Description:</span> */}
+          <input
+            type="text"
+            name="description"
+            className=" text-vsblack  rounded w-5/6 pl-1"
+            onChange={handleChange}
+            value={form.description}
+            placeholder="Description"
+          ></input>
+        </label>
+      </div>
       <label>
-        <span>Description:</span>
+        {/* <span className="mr-1">URL:</span> */}
         <input
-          type="text"
-          name="description"
-          onChange={handleChange}
-          value={form.description}
-        ></input>
-      </label>
-      <label>
-        <span>URL:</span>
-        <input
+          className="text-vsblack  rounded w-5/6 pl-1"
           type="text"
           name="url"
           onChange={handleChange}
           value={form.url}
+          placeholder="URL"
         ></input>
       </label>
-      <label>
+      <label className="hidden">
         <span>Icon:</span>
         <input
           type="text"
           name="icon"
           onChange={handleChange}
-          value={form.icon}
+          value="images/sharing.png"
         ></input>
       </label>
-      <button>Add Resources</button>
+      <img
+        src="images/addico.png"
+        className="inline ml-2 absolute right-1 bottom-1"
+        alt="add"
+        onClick={handleAddResourceButton}
+      />
+      {/* <button>Add Resources</button> */}
     </form>
   )
 }

@@ -25,7 +25,7 @@ function Nav() {
 
   return (
     <>
-      <div className="flex static bg-vslightblack rounded p-1.5 m-2 mt-5 align-middle">
+      <div className="flex relative bg-vslightblack rounded p-1.5 m-2 mt-5 align-middle">
         <div className="pt-3 text-2xl text-vsgrey font-black content-center">
           &lt;
         </div>
@@ -43,8 +43,8 @@ function Nav() {
         <div className="pt-3 text-2xl text-vsgrey font-black content-center">
           &gt;
         </div>
-        <div className="pt-5 ml-5 content-center">Hello, person!</div>
-        <div className="w-20 absolute right-1.5 top-3.5">
+        <div className="pt-5 ml-5 content-center">Hello, Rong!</div>
+        <div className="w-16 absolute right-0 top-0">
           <img
             className="rounded-full "
             src="server/db/seeds/profilepictures/rong.jpeg"
