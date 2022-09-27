@@ -16,11 +16,11 @@ export function getTodosByUserId(userId) {
     .catch(logError)
 }
 
-export function addTodo(todo, usertodo, token) {
+export function addTodo(todo, users, token) {
   return request
     .post(`${rootUrl}/todos`)
     .set('authorization', `Bearer ${token}`)
-    .send({ todo, usertodo })
+    .send({ todo, users })
     .then((res) => res.body.todos)
     .catch(logError)
 }
@@ -44,6 +44,7 @@ export function updateTodo(todo, currentUserId, token) {
 }
 
 export function deleteTodo(id, token) {
+ console.log ("from delete api", id)
   return request
     .delete(`${rootUrl}/todos/${id}`)
     .set('authorization', `Bearer ${token}`)
