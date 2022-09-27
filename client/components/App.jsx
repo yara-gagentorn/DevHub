@@ -9,6 +9,8 @@ import Todos from '../subcomponents/Todos/Todos'
 import Announcements from '../subcomponents/Announcements/Announcements'
 import Resources from '../subcomponents/Resources/Resources'
 import Announcments from '../subcomponents/Announcements/Announcements'
+import Journal from '../subcomponents/Journal/Journal'
+import OnTheFloor from '../views/user/OnTheFloor'
 
 import { useDispatch } from 'react-redux'
 import { clearLoggedInUser, updateLoggedInUser } from '../slices/user'
@@ -39,13 +41,12 @@ function App() {
     <>
       <div className="bg-vsblack">
         <div className="flex flex-col justify-center w-auto text-center  text-vslightblue">
-          {/* <div className="grid grid-cols-1 grid-rows-6 text-vslightblue m-auto w-96"> */}
           <Nav />
           <Todos />
           <Announcments />
           <Resources />
-          <div>On The floor</div>
-          <div>Journals</div>
+          <OnTheFloor />
+          <Journal />
         </div>
       </div>
     </>
