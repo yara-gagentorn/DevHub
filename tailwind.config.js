@@ -15,6 +15,7 @@ module.exports = {
         vsbrightgreen: '#4EC9B0',
         vsgrey: '#CCCCCC',
         vspink: '#C586C0',
+        vsorange:'#CE9178',
       },
     },
     fontFamily: { sans: ['Droid Sans Mono', 'monospace'] },

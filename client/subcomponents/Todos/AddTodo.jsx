@@ -29,7 +29,7 @@ function AddTodo(props) {
     addTodo(newTodo, newUserTodo)
       .then(() => loadTodos())
       .catch(() => {})
-    //setClicked(!clicked)
+    setClicked(!clicked)
   }
   return (
     <>

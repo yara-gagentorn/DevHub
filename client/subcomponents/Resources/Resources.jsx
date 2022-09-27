@@ -40,9 +40,13 @@ function Resources() {
       <ul className="">
         {resources.map((resource) => {
           return (
-            <li key={resource.id} className="flex align-middle w-1/2">
-              <img src={`${resource.icon}`} className="w-12 h-8"></img>
-              <a className="align-middle" href={resource.url}>
+            <li key={resource.id} className="flex">
+              <a className="" href={resource.url}>
+                <img
+                  src={`${resource.icon}`}
+                  className="inline w-4  mr-2 mb-1 "
+                  alt="ico"
+                />
                 {`${resource.description} (by ${resource.first_name})`}
               </a>
             </li>
