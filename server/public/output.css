@@ -551,6 +551,7 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -745,6 +746,7 @@ video {
 
 .rounded {
   border-radius: 0.25rem;
+
 }
 
 .rounded-full {
@@ -793,6 +795,21 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
+
+
+.bg-lime-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(54 83 20 / var(--tw-bg-opacity));
+}
+
+.bg-lime-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(247 254 231 / var(--tw-bg-opacity));
+}
+
+.bg-lime-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(236 252 203 / var(--tw-bg-opacity));
 
 .bg-clip-padding {
   background-clip: padding-box;

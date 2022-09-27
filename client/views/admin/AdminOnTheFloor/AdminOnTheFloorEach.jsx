@@ -2,15 +2,16 @@ import React from 'react'
 import TimeLine from './TimeLine'
 
 function AdminOnTheFloorEach(props) {
-  const timePeriods = props.facilitator
-  console.log(timePeriods)
+  //const timePeriods = props.facilitator
+  //console.log(timePeriods)
   // get user by id
 
   return (
     <>
       <div>
-        {/* picture of the facilitator */}
-        <TimeLine timePeriods={timePeriods} />
+        <p>hello there</p>
+        {/* picture of the facilitator timePeriods={timePeriods}*/}
+        <TimeLine />
       </div>
     </>
   )
