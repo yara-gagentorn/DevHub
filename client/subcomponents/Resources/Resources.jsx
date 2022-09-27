@@ -35,6 +35,7 @@ function Resources() {
   }, [])
 
   function isUsers(id) {
+    console.log(id)
     if (id == 2) return true
     else return false
   }
@@ -53,13 +54,13 @@ function Resources() {
                   alt="ico"
                 />
                 {`${resource.description} (by ${resource.first_name})`}
-                {isUsers(resource.user_id) && (
-                  <img
-                    src="images/deleteico.png"
-                    className="inline ml-2 mb-1 w-4"
-                    alt="delete"
-                  />
-                )}
+                <img
+                  src="/images/deleteico.png"
+                  className={`inline ml-2 mb-1 w-4 ${
+                    !isUsers(resource.user_id) ? 'hidden' : ''
+                  }`}
+                  alt="delete"
+                />
               </a>
             </li>
           )

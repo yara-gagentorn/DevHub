@@ -10,7 +10,7 @@ function AddResource(props) {
   const [form, setForm] = useState({
     description: '',
     url: '',
-    icon: '',
+    icon: 'images/sharing.png',
     date: testDate, // TODO: Change to today's date
     user_id: 2, // TODO: import current USER_ID
   })
@@ -35,51 +35,53 @@ function AddResource(props) {
   }
 
   return (
-    <form
-      className={`${showAdd ? '' : 'hidden'}`}
-      //onSubmit={handleAddResourceButton}
-    >
-      <div className="mb-1">
+    <>
+      <form
+        className={`${showAdd ? '' : 'hidden'}`}
+        //onSubmit={handleAddResourceButton}
+      >
+        <div className="mb-1">
+          <label>
+            {/* <span className="mr-1 inline">Description:</span> */}
+            <input
+              type="text"
+              name="description"
+              className=" text-vsblack  rounded w-5/6 pl-1"
+              onChange={handleChange}
+              value={form.description}
+              placeholder="Description"
+            ></input>
+          </label>
+        </div>
         <label>
-          {/* <span className="mr-1 inline">Description:</span> */}
+          {/* <span className="mr-1">URL:</span> */}
           <input
+            className="text-vsblack  rounded w-5/6 pl-1"
             type="text"
-            name="description"
-            className=" text-vsblack  rounded w-5/6 pl-1"
+            name="url"
             onChange={handleChange}
-            value={form.description}
-            placeholder="Description"
+            value={form.url}
+            placeholder="URL"
           ></input>
         </label>
-      </div>
-      <label>
-        {/* <span className="mr-1">URL:</span> */}
-        <input
-          className="text-vsblack  rounded w-5/6 pl-1"
-          type="text"
-          name="url"
-          onChange={handleChange}
-          value={form.url}
-          placeholder="URL"
-        ></input>
-      </label>
-      <label className="hidden">
-        <span>Icon:</span>
-        <input
-          type="text"
-          name="icon"
-          onChange={handleChange}
-          value="images/sharing.png"
-        ></input>
-      </label>
-      <img
-        src="images/addico.png"
-        className="inline ml-2 absolute right-1 bottom-1"
-        alt="add"
-        onClick={handleAddResourceButton}
-      />
-      {/* <button>Add Resources</button> */}
-    </form>
+        <label className="hidden">
+          <span>Icon:</span>
+          <input
+            type="text"
+            name="icon"
+            onChange={handleChange}
+            value={form.icon}
+          ></input>
+        </label>
+        <img
+          src="images/addico.png"
+          className="inline ml-2 absolute right-1 bottom-1"
+          alt="add"
+          onClick={handleAddResourceButton}
+        />
+        {/* <button>Add Resources</button> */}
+      </form>
+    </>
   )
 }
 

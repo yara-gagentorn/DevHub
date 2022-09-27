@@ -15,7 +15,8 @@ function getAllResources(db = connection) {
       'resources.url as url',
       'resources.icon as icon',
       'resources.date as date',
-      'users.first_name as first_name'
+      'users.first_name as first_name',
+      'resources.user_id as user_id'
     )
 }
 
