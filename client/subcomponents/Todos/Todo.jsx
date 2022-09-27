@@ -37,9 +37,9 @@ function Todo(props) {
 
   return (
     <>
-      <div className={isDone ? 'line-through text-vsblack	' : ' text-vsgreen'}>
+      <div className={isDone ? 'line-through text-vsgrey	' : ''}>
         <input
-          className="accent-gray-300"
+          className="mr-2 accent-vsgrey"
           onChange={handleBoxChecked}
           type="checkbox"
           name=""
@@ -55,10 +55,25 @@ function Todo(props) {
           content
         )}
 
-        {!!inTrello && <span className="text-sky-400">Trello</span>}
+
+        {!!inTrello && (
+          <span className="">
+            <img
+              src="images/trelloico.png"
+              className="inline ml-2 mb-1 w-4"
+              alt="trello"
+            />
+          </span>
+        )}
+
         {!!isPersonal && (
           <span className=" text-zinc-400" onClick={handleDelete}>
-            Delete
+             <img
+              src="images/deleteico.png"
+              className="inline ml-2 mb-1 w-4"
+              alt="delete"
+            />
+           
           </span>
         )}
       </div>

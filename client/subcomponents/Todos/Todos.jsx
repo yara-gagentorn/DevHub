@@ -33,8 +33,9 @@ function Todos() {
   //console.log('current todos for user 2', todos)
   return (
     <>
-      <div className="bg-[#FEC02D] text-white text-center">
-        <h1>To do:</h1>
+      <div className="flex flex-col relative bg-vslightblack rounded p-1.5 m-2 mt-1 text-left">
+        <span className="text-vspink">Things to do:</span>
+
         {todos.map((todo) => (
           <Todo
             key={todo.user_todos_id}
@@ -43,6 +44,22 @@ function Todos() {
             currentUserId={currentUserId}
           />
         ))}
+
+        {!addClicked && (
+          <img
+            src="images/addico.png"
+            className="absolute top-2 right-1"
+            onClick={handleClick}
+            alt="add"
+          />
+        )}
+
+        {addClicked && (
+          <div>
+            <AddTodo loadTodos={loadTodos} />
+          </div>
+        )}
+
 
         <button
           //className={addClicked ? 'invisible' : 'visible'}
@@ -59,6 +76,7 @@ function Todos() {
           setShowAdd={setShowAdd}
           loadTodos={loadTodos}
         />
+
       </div>
     </>
   )
