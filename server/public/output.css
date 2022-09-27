@@ -551,6 +551,7 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+
 .static {
   position: static;
 }
@@ -589,6 +590,14 @@ video {
 
 .m-auto {
   margin: auto;
+
+.visible {
+  visibility: visible;
+}
+
+.invisible {
+  visibility: hidden;
+
 }
 
 .m-0 {
@@ -637,6 +646,10 @@ video {
 
 .flex {
   display: flex;
+}
+
+.table {
+  display: table;
 }
 
 .hidden {

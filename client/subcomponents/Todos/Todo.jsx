@@ -4,32 +4,35 @@ import { updateTodo, deleteTodo } from '../../api/todos'
 
 function Todo(props) {
   const {
-    id,
+    user_todos_id,
     user_id,
+    todo_id,
     date,
     content,
     challenge_link,
     inTrello,
     isDone,
     isPersonal,
+    currentUserId,
   } = props.todo
 
-  const { loadTodos } = props.loadTodos
+  const loadTodos = props.loadTodos
 
   function handleBoxChecked() {
-    // on click change the value in the db
-    const newTodo = { ...props.todo, isDone: !props.todo.isDone }
-    updateTodo(newTodo)
-      .then(() => loadTodos())
+    const newTodo = {
+      ...props.todo,
+      isDone: !props.todo.isDone,
+    }
+
+    updateTodo(newTodo, currentUserId)
+      .then(loadTodos())
       .catch(() => {})
   }
 
   function handleDelete() {
-    // on click change the value in the db
-    console.log('Delete')
-    // deleteTodo(id)
-    //   .then(() => loadTodos())
-    //   .catch(() => {})
+    deleteTodo(user_todos_id)
+      .then(() => loadTodos())
+      .catch(() => {})
   }
 
   return (
@@ -52,6 +55,7 @@ function Todo(props) {
           content
         )}
 
+
         {!!inTrello && (
           <span className="">
             <img
@@ -61,6 +65,7 @@ function Todo(props) {
             />
           </span>
         )}
+
         {!!isPersonal && (
           <span className=" text-zinc-400" onClick={handleDelete}>
              <img
